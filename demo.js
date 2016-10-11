@@ -53,6 +53,7 @@
           path = design.path;
           datP = {}
           datP["PN"] = pn;
+          datP["COND"] = c;
           datP['IITOTAL'] = 0;
           bonus = 0;
           usedNames = []
