@@ -195,7 +195,6 @@
           var templateQT1 = Handlebars.compile($("#qt1-template").html());
 
 
-          window.n = design.n;
           // find out how to do swsitch/case OR
 
           routie('init', function(bl) {

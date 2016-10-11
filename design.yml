@@ -4,7 +4,6 @@ ptrange:
   last: 36
 path: 1
 likes: false
-n: 5
 imgsrc: "faces/"
 imgsrcAlt: "http://cdn.rawgit.com/anidroid/files/master/faces/"
 bonus: false
@@ -82,7 +81,7 @@ blocks:
       -
         trialID: 1
         layout: stim
-        nstim: 1
+        nstim: 5
   -
     QID: II
     eachT: true
