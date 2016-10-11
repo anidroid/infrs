@@ -302,7 +302,7 @@
               $('#q1resp').html(templateQT1({
                   'options': datT[s][curr.options]
               }));
-
+              datT[s]["ORDER_II"] = t
 
               //nav(2,t,r)
               $('.btn-resp').off('click').on('click', function() {
