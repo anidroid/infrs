@@ -10,7 +10,6 @@
       } else {
           cond = _.sample([1,2])
       };
-      console.log(cond);
 
       if (QueryString['d']) {
           var designsrc = window.decode(window.QueryString.d)
