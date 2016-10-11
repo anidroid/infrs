@@ -1,7 +1,6 @@
 window.nav = function(b, t) {
     if (design.blocks[b].eachT == true) {
         if (orderid < order.length) {
-            console.log(orderid)
             routie('b' + b + '/' + order[orderid].trialid + '/' + order[orderid].stimid)
             orderid++
         } else {
@@ -19,14 +18,12 @@ window.nav = function(b, t) {
             }
     } else if (t + 1 < design.blocks[b].trials.length) {
         // IF MORE TRIALS, MOVE TO NEXT TRIAL
-        console.log('move to next trial')
         nextt = t + 1
         routie('b' + b + '/' + nextt + '/0')
     } else if (b + 1 >= design.blocks.length) {
         routie('end')
     } else if (t + 1 >= design.blocks[b].trials.length) {
         // IF ALL TRIALS AND REPEATS, MOVE TO NEXT BLOCK
-        console.log('move to next block')
         nextb = b + 1
         routie('instr/' + nextb)
     } else {
