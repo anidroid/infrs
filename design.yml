@@ -593,34 +593,52 @@ probesNovel:
 cuesNeutral:
   -
     id: NEUT1
-    text: 'nn1'
+    text: 'To do list for the next month: all the work I've been pretending doesn't exist for the past two weeks.'
   -
     id: NEUT2
-    text: 'nn2'
+    text: 'No interruptions this afternoon please. Watching presentations on livestream and editing.'
   -
     id: NEUT3
-    text: 'nn3'
+    text: 'Looking ahead to work tomorrow, can't believe how much there is to get through in such a short time ... #arghh!'
   -
     id: NEUT4
-    text: 'nn2'
+    text: 'Went for a nice 2 hour walk with a good friend, brainstorming ideas. Tomorrow back to the office again after a short break'
   -
     id: NEUT5
-    text: 'nn4'
+    text: 'it is Friday afternoon and my office is much too cold, but with Twitter as my witness I will spend the next week writing'
   -
     id: NEUT6
-    text: 'nn5'
+    text: 'Shoutout to the friend who has inspired me to spring clean my inbox this morning.'
   -
     id: NEUT7
-    text: 'nn6'
+    text: 'Oh, just remembered ... happy Friday everybody!'
   -
     id: NEUT8
-    text: 'nn7'
+    text: 'I'm sitting in the garden and enjoy the sun. Live is good!'
   -
     id: NEUT9
-    text: 'nn8'
+    text: 'Just woke up and thought about travelling. 3 hours later in the train to the sea.'
   -
     id: NEUT10
-    text: 'nn9'
+    text: 'I invited the new girl from my class to join me and my friends for lunch.'
+  -
+    id: NEUT11
+    text: 'The season finale was amazing. Sad that it is over but even more so I am happy that it happened'
+  -
+    id: NEUT12
+    text: 'Best part of the article.. Not knowing what you're doing is a skill you can't teach'
+  -
+    id: NEUT13
+    text: 'On my way to the cinema. It has been a while. I can barely remember the last film I saw'
+  -
+    id: NEUT14
+    text: 'I spilled coffee all over my desk. Goodbye beautiful notes and doodles. And yeah also laptop.'
+  -
+    id: NEUT15
+    text: 'Took a break from social media and liked it but it is good to be back'
+  -
+    id: NEUT16
+    text: 'I like active, breathtaking vacation. I like lazy, relaxing vacations. I guess I just like vacations.'
 names:
   m:
    - Lukas
