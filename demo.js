@@ -53,7 +53,7 @@
           path = design.path;
           datP = {}
           datP["PN"] = pn;
-          datP["COND"] = cond;
+          datP["COND1"] = cond;
           datP['IITOTAL'] = 0;
           bonus = 0;
           usedNames = []
@@ -73,7 +73,7 @@
           if (design.pretest != 1) {
               for (cnd = 0; cnd < design.cond.length; cnd++) { //loop tru conditions
                   for (t = 0; t < design.cond[cnd].ntargets; t++) { //loop tru targets
-                      COND = cnd;
+                      COND2 = cnd;
                       ID = cnd + t;
                       ACTRGEN = _.sample(["m", "f"]);
                       if (ACTRGEN === "m") {
