@@ -593,13 +593,13 @@ probesNovel:
 cuesNeutral:
   -
     id: NEUT1
-    text: 'To do list for the next month: all the work I've been pretending doesn't exist for the past two weeks.'
+    text: 'To do list for the next month: all the work I have been pretending doesnt exist for the past two weeks.'
   -
     id: NEUT2
     text: 'No interruptions this afternoon please. Watching presentations on livestream and editing.'
   -
     id: NEUT3
-    text: 'Looking ahead to work tomorrow, can't believe how much there is to get through in such a short time ... #arghh!'
+    text: 'Looking ahead to work tomorrow, cannot believe how much there is to get through in such a short time ... #arghh!'
   -
     id: NEUT4
     text: 'Went for a nice 2 hour walk with a good friend, brainstorming ideas. Tomorrow back to the office again after a short break'
@@ -614,7 +614,7 @@ cuesNeutral:
     text: 'Oh, just remembered ... happy Friday everybody!'
   -
     id: NEUT8
-    text: 'I'm sitting in the garden and enjoy the sun. Live is good!'
+    text: 'I am sitting in the garden and enjoy the sun. Live is good!'
   -
     id: NEUT9
     text: 'Just woke up and thought about travelling. 3 hours later in the train to the sea.'
@@ -626,7 +626,7 @@ cuesNeutral:
     text: 'The season finale was amazing. Sad that it is over but even more so I am happy that it happened'
   -
     id: NEUT12
-    text: 'Best part of the article.. Not knowing what you're doing is a skill you can't teach'
+    text: 'Best part of the article.. Not knowing what you are doing is a skill you cannot teach'
   -
     id: NEUT13
     text: 'On my way to the cinema. It has been a while. I can barely remember the last film I saw'
