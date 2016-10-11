@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- <link rel="icon" href="../../favicon.ico"> -->
+    <title>Hallo code</title>
+    <script src="scripts/jquery-3.1.0.min.js"></script>
+    <script src="scripts/handlebars-v4.0.5.js"></script>
+    <script src="scripts/yaml.js"></script>
+    <script src="scripts/underscore-min.js"></script>
+    <script src="scripts/routie.min.js"></script>
+    <script src="scripts/kinto-http.js"></script>
+    <script src="scripts/functions.js"></script>
+    <script defer src="demo.js"></script>
+    <!-- Material Design fonts -->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-material-design.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <link href="css/ripples.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
+</head>
+
+<!--  START {}TEMPLATES  -->
+<script id="stimcomplete-partial" type="text/x-handlebars-template">
+    <div class="card">
+        <div class="stimcomplete">
+            <img src={{ACTRFACE}}>
+            <div class="content">
+                <h1>{{ACTRNAME}}</h1>
+                <p>{{CUES.[0].text}}</p>
+                <div class="footer">
+                    <i class="fa fa-share" aria-hidden="true"></i>
+                    <i class="fa fa-retweet" aria-hidden="true"></i>
+                    <a class="btn btn-sm btn-like" href="#" role="button" data-liked={{CUES.[0].id}}><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<script id="stimtarget-partial" type="text/x-handlebars-template">
+    <div class="card">
+        <div class="stimtarget">
+            <img src={{ACTRFACE}}>
+            <h1>{{ACTRNAME}}</h1>
+        </div>
+    </div>
+</script>
+<script id="stim-template" type="text/x-handlebars-template">
+    <div class="tl">
+        {{#each hbprofiles}} {{> stimcomplete}} {{/each}}
+    </div>
+    <a class="btn btn-stim btn-sm btn-block" href="#" role="button">next</a>
+</script>
+<script id="stim-template-n" type="text/x-handlebars-template">
+    {{> stimcomplete}}
+</script>
+<script id="stim-template-t" type="text/x-handlebars-template">
+    {{> stimtarget}}
+</script>
+<script id="stim-template-p" type="text/x-handlebars-template">
+    <div class="probe" data-probe={{this}}>{{this}}</div>
+</script>
+<script id="qt1-template" type="text/x-handlebars-template">​
+    <div class="q1-choices">
+        {{#each options}}
+        <a class="btn btn-raised btn-sm btn-resp" href="#" role="button" data-resp={{this}}>{{this}}</a> {{/each}}
+        <a class="btn btn-sm btn-resp" href="#" role="button" data-resp="skip" style="background-color: transparent; border:0px">Skip (no idea)</a>
+    </div>
+    ​</script>
+<script id="qt2-template" type="text/x-handlebars-template">​
+    <div class="q1-choices">
+        {{#each hbprofiles}}
+        <a class="btn btn-sm btn-resp" href="#" role="button" data-resp={{name}}>{{> stimtarget}}</a> {{/each}}
+        <br>
+        <a class="btn btn-sm btn-resp" href="#" role="button" data-resp="skip" style="background-color: transparent; border:0px">Skip (no idea)</a>
+    </div>
+    ​</script>
+<script id="qt3-template" type="text/x-handlebars-template">​
+    <div class="q1-choices">
+        <h2>{{text}}</h2>
+        <h3><b>{{probe}}</b></h3>
+        <h4>{{instr}}</h4>
+        <br> {{#each options}}
+        <a class="btn btn-raised btn-options btn-sm" href="#" role="button" data-str={{lab}} data-num={{val}}>{{lab}}</a> {{/each}}
+        <br>
+        <a class="btn btn-block btn-lg btn-resp" href="#" role="button">Submit</a>
+    </div>
+    ​</script>
+<script id="qt4-template" type="text/x-handlebars-template">​
+    <div class="form-group label-floating">
+        <label class="control-label" for="focusedInput1">{{text}}</label>
+        <input class="form-control" id="focusedInput1" type="text">
+    </div>
+    <a class="btn btn-block btn-lg btn-resp" href="#" role="button">Submit</a> ​
+</script>
+
+<!--  END TEMPLATES  -->
+
+<body>
+
+    <div class="container">
+        <!-- <div class="header clearfix">
+        <h3 class="text-muted">Project name</h3>
+      </div> -->
+
+        <div class="undercover" id="stim">
+          aa
+        </div>
+
+        <div class="undercover" id="instr">
+            <div id="ctext"></div>
+            <div id="cresp">
+                <a class="btn btn-sm btn-block active btn-instr" href="#" role="button">next</a>
+            </div>
+        </div>
+
+        <div class="undercover q" id=qt1>
+            <div class="row">
+                <h2 class="col-sm-12" id="qt1text"></h2>
+            </div>
+            <div class="row">
+                <div class="col-sm-3" id="q1stim"></div>
+                <div class='q' id="q1probe"></div>
+                <div class='q' id="q1resp"></div>
+            </div>
+        </div>
+
+        <div class="undercover q" id=qt2>
+            <div class="row">
+                <div class="col-sm-12" id="q2text"></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3" id="q2stim"></div>
+                <div class='q' id="q2probe"></div>
+                <div class='q' id="q2resp"></div>
+            </div>
+
+        </div>
+
+        <div class="undercover" id=qq>
+        </div>
+
+        <div class="undercover" id=debrief>
+            <h3 id="dtext1"></h3>
+
+            <div id="dresp">
+                <a class="btn btn-lg btn-block active btn-end" href="#" role="button">SUBMIT</a>
+            </div>
+            <br>
+            <div id="dtext2"></div>
+        </div>
+
+    </div>
+    <!-- /container -->
+</body>
+
+</html>

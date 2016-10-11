@@ -1,0 +1,149 @@
+body {
+    padding-top: 100px;
+}
+
+#dispstim {
+    margin-bottom: 40px;
+}
+
+.container {
+    max-width: 750px;
+    margin: auto;
+}
+
+#intro {
+    font-size: 1.5em;
+    color: gray;
+    padding: 1em 0em 1em 0em;
+}
+
+#intro p {
+    font-size: .7em;
+}
+
+#q1Stim {
+ margin-top: 20px;
+
+    margin-bottom: 180px;
+}
+
+#q2Stim {
+    margin-top: 10px;
+    margin-bottom: 180px;
+}
+
+.card {
+    margin-bottom: 5px;
+}
+
+.stimcomplete {
+    position: relative;
+    padding: .8em;
+    padding-right: 1.3em;
+}
+
+.stimcomplete img {
+    height: 7em;
+    float: left;
+    margin: .5em;
+}
+
+.stimcomplete .content {
+    margin-left: 7.5em;
+}
+
+.stimcomplete .content h1 {
+    font-size: 1.3em;
+    color: #a1a1a1;
+}
+
+.stimcomplete .content p {
+    font-size: 1.3em;
+    margin-bottom: .8em;
+}
+
+.stimcomplete .footer {
+    text-align: right;
+    border-top: 1px solid #e5e5e5;
+}
+
+.stimcomplete .footer i {
+    font-size: 13px;
+    margin: 5px 0em 0px 20px;
+    position: table;
+    color: #e5e5e5;
+}
+
+.stimcomplete .disabled i {
+    font-size: 12px;
+    color: #e5e5e5 !important;
+}
+
+.stimcomplete .footer .btn-like {
+    font-size: 12px;
+    margin: 2px 0em 0px 20px;
+    padding: 0px 0px 0px 0px;
+    background-color: white !important;
+}
+
+.btn-like.focus {
+    background-color: #FFF !important;
+}
+
+.liked i {
+    color: #428bca !important;
+}
+
+.stimcomplete .footer .btn:hover {
+    background-color: transparent !important;
+}
+
+.stimcomplete .footer .btn i {
+    margin: 0px 0em 0px 0em;
+    color: #808080;
+}
+
+.stimcomplete .footer .btn:hover i {
+    color: #1976D2;
+}
+
+.stimtarget {
+    position: relative;
+    padding: 1em;
+}
+
+.stimtarget img {
+    display: block;
+    margin: auto;
+    padding-bottom: 1em;
+    height: 7em;
+    align: center;
+}
+
+.stimtarget h1 {
+    font-size: 1.5em;
+    text-align: center;
+    margin: 0em;
+}
+
+
+/* Q1 CSS */
+
+.q1-choices {
+    margin: 0 0 0 15px;
+}
+
+.q .btn {
+    font-size: 1em;
+}
+
+.selected {
+    background-color: #d3d3d3 !important;
+}
+
+.probe {
+    margin-top:20px;
+    padding-left: 15px;
+    font-size: 3em;
+    font-weight: bold;
+}
