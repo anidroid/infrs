@@ -109,8 +109,7 @@ blocks:
           layout: qt3
           QID: 5
           QT: 2
-          QLB: 'STRG_1'
-          VT: 'num'
+          QLB: 'STRTG_1'
           text: >
             While you were reading the social media posts, how frequently did you...
           probe: >
@@ -139,8 +138,7 @@ blocks:
           layout: qt3
           QID: 5
           QT: 2
-          QLB: 'STRG_2'
-          VT: 'num'
+          QLB: 'STRTG_2'
           text: >
             While you were reading the social media posts, how frequently did you...
           probe: >
@@ -170,8 +168,7 @@ blocks:
           layout: qt3
           QID: 5
           QT: 2
-          QLB: 'STRG_3'
-          VT: 'num'
+          QLB: 'STRTG_3'
           text: >
             While you were reading the social media posts, how frequently did you...
           probe: >
@@ -201,8 +198,7 @@ blocks:
           layout: qt3
           QID: 5
           QT: 2
-          QLB: 'STRG_3'
-          VT: 'num'
+          QLB: 'STRTG_4'
           text: >
             While you were reading the social media posts, how frequently did you...
           probe: >
@@ -232,8 +228,7 @@ blocks:
           layout: qt3
           QID: 5
           QT: 2
-          QLB: 'STRG_3'
-          VT: 'num'
+          QLB: 'STRTG_5'
           text: >
             While you were reading the social media posts, how frequently did you...
           probe: >
@@ -270,7 +265,6 @@ blocks:
           QID: 3
           QT: 1
           QLB: 'OWNDOM'
-          VT: 'str'
           text : 'Which of these domains are you interested in?'
           instr: 'Select a domain by pressing it. Deselect by pressing again. Select all that apply and press Submit whenerver you are ready.'
           options:
@@ -310,7 +304,6 @@ blocks:
           QID: 4
           QT: 2
           QLB: 'SMUF'
-          VT: 'num'
           text: 'How often do you use social media sites, such as Facebook or Twitter?'
           instr: 'Select your response and press Submit.'
           options:
@@ -350,7 +343,6 @@ blocks:
           QID: 4
           QT: 2
           QLB: 'MC'
-          VT: 'num'
           text: 'Which of these instructions did you receive at the very beginning?'
           instr: 'Please try to recall.'
           options:
@@ -369,7 +361,7 @@ blocks:
           QID: 7
           QLB: 'PAID'
           QT: 3
-          VT: 'str'
+          required: true
           text: 'Please enter your Prolific ID:'
           instr: 'It can be found at the top of this webpage or when going to your account info:'
 ii:

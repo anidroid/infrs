@@ -281,8 +281,8 @@
 
               //nav(1,t,r)
               $('.btn-stim').off('click').on('click', function() {
-                  datP['TIMEPG' + page] = (Date.now() - pageStart) / 1000;
-                  datP['TIMEPG' + page] = (Date.now() - pageStart) / 1000;
+                  datP['DURPG_' + page] = (Date.now() - pageStart) / 1000;
+                  datP['DURPG_' + page] = (Date.now() - pageStart) / 1000;
                   nav(b)
               });
           });
@@ -324,10 +324,15 @@
               s = parseInt(stim)
               curr = design.blocks[b].trials[t]
               layout = '#' + curr.layout
+              res = 'NA'
               var hb = Handlebars.compile($(layout + '-template').html());
               $('#qq').html(hb(curr));
               $('#qq').show();
-
+              if (orderid == 1) {
+                  datP["ORDER_"+'Q'+curr.QID] = String('Q'+curr.QID+'_'+curr.QLB)
+              } else {
+                datP["ORDER_"+'Q'+curr.QID] = datP["ORDER_"+'Q'+curr.QID].concat(";"+String('Q'+curr.QID+'_'+curr.QLB))
+              }
               switch (curr.QT) {
                   case 1:
                       $('.btn-raised').off('click').on('click', function() {
@@ -339,7 +344,7 @@
                       });
                       $('.btn-resp').off('click').on('click', function() {
                           for (i = 0; i < $('.btn-options').length; i++) {
-                              lab = $($('.btn-options')[i]).data(curr.VT);
+                              lab = $($('.btn-options')[i]).text();
                               res = $($('.btn-options')[i]).hasClass('selected');
                               varname = 'Q' + curr.QID +'_'+ curr.QLB + '_' + lab
                               datP[varname] = res;
@@ -349,12 +354,18 @@
                   break;
                   case 2:
                       $('.btn-raised').off('click').on('click', function() {
-                          datP['Q'+curr.QID+'_'+curr.QLB] = $(this).data(curr.VT);
+                          res = $(this).data('val');
                           $('.btn-raised').removeClass('selected');
                           $(this).addClass('selected');
                       });
                       $('.btn-resp').off('click').on('click', function() {
-                          nav(b, t)
+                          if (res == 'NA'){
+                            window.reqresp = alertify.error("Please give a response");
+                          } else {
+                            datP['Q'+curr.QID+'_'+curr.QLB] = res
+                            nav(b, t)
+                            reqresp.dismiss()
+                          }
                       });
                   break;
                   case 3:
@@ -366,7 +377,6 @@
                   default:
                   console.log('err')
               }
-              datP["ORDER_"+'Q'+curr.QID] = orderid
           });
 
           routie('b3/?:trial/?:stim', function(trial, stim) {
@@ -379,7 +389,7 @@
               var hb = Handlebars.compile($(layout + '-template').html());
               $('#qq').html(hb(curr));
               $('#qq').show();
-
+              res = 'NA'
               switch (curr.QT) {
                   case 1:
                       $('.btn-raised').off('click').on('click', function() {
@@ -391,7 +401,7 @@
                       });
                       $('.btn-resp').off('click').on('click', function() {
                           for (i = 0; i < $('.btn-options').length; i++) {
-                              lab = $($('.btn-options')[i]).data(curr.VT);
+                              lab = $($('.btn-options')[i]).text();
                               res = $($('.btn-options')[i]).hasClass('selected');
                               varname = 'Q' + curr.QID +'_'+ curr.QLB + '_' + lab
                               datP[varname] = res;
@@ -401,18 +411,33 @@
                   break;
                   case 2:
                       $('.btn-raised').off('click').on('click', function() {
-                          datP['Q'+curr.QID+'_'+curr.QLB] = $(this).data(curr.VT);
+                          res = $(this).data('val');
                           $('.btn-raised').removeClass('selected');
                           $(this).addClass('selected');
                       });
                       $('.btn-resp').off('click').on('click', function() {
-                          nav(b, t)
+                          if (res == 'NA'){
+                            window.reqresp = alertify.error("Please give a response");
+                          } else {
+                            datP['Q'+curr.QID+'_'+curr.QLB] = res
+                            nav(b, t)
+                            reqresp.dismiss()
+                          }
                       });
                   break;
                   case 3:
                       $('.btn-resp').off('click').on('click', function() {
-                          datP['Q'+curr.QID+'_'+curr.QLB] = $('.form-control').val();
-                          nav(b, t)
+                          res = $('.form-control').val();
+                          datP['Q'+curr.QID+'_'+curr.QLB] = res;
+                          if (curr.required == true){
+                            if (res == ""){
+                              window.reqresp = alertify.error("Please give a response");
+                            } else {
+                              nav(b, t)
+                              reqresp.dismiss()
+                            }
+                          } else {
+                          nav(b, t)}
                       });
                   break;
                   default:

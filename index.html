@@ -16,6 +16,7 @@
     <script src="scripts/routie.min.js"></script>
     <script src="scripts/kinto-http.js"></script>
     <script src="scripts/functions.js"></script>
+    <script src="scripts/alertify.js"></script>
     <script defer src="demo.js"></script>
     <!-- Material Design fonts -->
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
@@ -24,6 +25,7 @@
     <link href="css/bootstrap-material-design.css" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
     <link href="css/ripples.css" rel="stylesheet">
+    <link href="css/alertify.css" rel="stylesheet">
     <link href="css/font-awesome.css" rel="stylesheet">
 </head>
 
@@ -88,7 +90,7 @@
         <h3><b>{{probe}}</b></h3>
         <h4>{{instr}}</h4>
         <br> {{#each options}}
-        <a class="btn btn-raised btn-options btn-sm" href="#" role="button" data-str={{lab}} data-num={{val}}>{{lab}}</a> {{/each}}
+        <a class="btn btn-raised btn-options btn-sm" href="#" role="button" data-val={{val}}>{{lab}}</a> {{/each}}
         <br>
         <a class="btn btn-block btn-lg btn-resp" href="#" role="button">Submit</a>
     </div>
