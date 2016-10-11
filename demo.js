@@ -366,6 +366,7 @@
                   default:
                   console.log('err')
               }
+              datP["ORDER_"+'Q'+curr.QID] = orderid
           });
 
           routie('b3/?:trial/?:stim', function(trial, stim) {
