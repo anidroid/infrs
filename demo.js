@@ -8,7 +8,7 @@
       if (QueryString['c']) {
           var cond = window.decode(window.QueryString.c)
       } else {
-          cond = _.sample([1,2])
+          cond = _.sample([1,2,3])
       };
 
       if (QueryString['d']) {
