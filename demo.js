@@ -19,9 +19,9 @@
       };
 
       // Function to create a Profile object
-      function T(ID, COND, IIREF, CUES, ACTRFACE, ACTRNAME, ACTRGEN, iiprobes) {
+      function T(ID, COND2, IIREF, CUES, ACTRFACE, ACTRNAME, ACTRGEN, iiprobes) {
           this.ID = ID;
-          this.COND = COND;
+          this.COND2 = COND2;
           this.IIREF = IIREF; //teaching
           this.IIPRB = IIPRB;
           this.CUES = CUES;
@@ -123,7 +123,7 @@
                           }
                           iiprobes = _.shuffle(_.sample(probesOther.concat(probesNovel), 9));
                       }
-                      datT.push(new T(ID, COND, IIREF, CUES, ACTRFACE, ACTRNAME, ACTRGEN, iiprobes))
+                      datT.push(new T(ID, COND2, IIREF, CUES, ACTRFACE, ACTRNAME, ACTRGEN, iiprobes))
                   }
               }
           } else if (design.pretest == 1) {
@@ -141,7 +141,7 @@
               for (i = design.ptrange.first; i < design.ptrange.last; i++) {
                   ID = i;
                   CUES = [];
-                  COND = "pretest"
+                  COND2 = "pretest"
                   ACTRGEN = _.sample(["m", "f"]);
                   if (ACTRGEN === "m") {
                       ACTRNAME = _.sample(_.difference(design.names.m, usedNames));
@@ -181,7 +181,7 @@
                   probesOther = _.difference(probesOther, [IIPRB]);
                   // ... select probe words for each question/task
                   iiprobes = _.shuffle([IIPRB].concat(_.sample(probesOther.concat(probesNovel), 9)));
-                  datT.push(new T(ID, COND, IIREF, CUES, ACTRFACE, ACTRNAME, ACTRGEN, iiprobes));
+                  datT.push(new T(ID, COND2, IIREF, CUES, ACTRFACE, ACTRNAME, ACTRGEN, iiprobes));
               }
           } else {
               console.log('err')
