@@ -222,16 +222,25 @@
                   $('#instr').hide();
                   nav(b, t)
               });
-
+              //this whole thing is a mess -->
               if (design.blocks[b].eachT == true) {
-                  order = []; orderid = 0
+                order = []; orderid = 0
+                if (design.blocks[b].stimT) {
+                  order.push({ trialid: 0, stimid: 0 })
+                  for (var i = 1; i < datT.length/design.blocks[b].stimT; i++) {
+                      for (var tr = 0; tr < design.blocks[b].trials.length; tr++) {
+                          order.push({ trialid: tr, stimid: design.blocks[b].stimT*i })
+                      }
+                  }
+                } else {
                   for (var i = 0; i < datT.length; i++) {
                       for (var tr = 0; tr < design.blocks[b].trials.length; tr++) {
                           order.push({ trialid: tr, stimid: i })
                       }
                   }
-                  if (design.blocks[b].randomized == true) {
-                      order = _.shuffle(order);
+                }
+                if (design.blocks[b].randomized == true) {
+                    order = _.shuffle(order);
                   }
               } else if (design.blocks[b].randomized == true) {
                   order = []; orderid = 0
@@ -250,13 +259,13 @@
               b = 0
               t = parseInt(trial)
               s = parseInt(stim)
-              curr = design.blocks[b].trials[t]
+                curr = design.blocks[b].trials[t]
               layout = '#' + curr.layout
               var hb = Handlebars.compile($(layout + '-template').html());
               $(layout).show();
 
               datt = [];
-              for (i = s; i < s + curr.nstim; i++) {
+              for (i = s; i < s + design.blocks[b].stimT; i++) {
                   datt.push(datT[i])
                   if(datT[i]){ datT[i]["PAGE"] = page; }
               }

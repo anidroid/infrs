@@ -21,13 +21,11 @@ body {
     font-size: .7em;
 }
 
-#q1Stim {
- margin-top: 20px;
-
-    margin-bottom: 180px;
+#q1stim {
+   margin: 20px 0px 100px 0px;
 }
 
-#q2Stim {
+#q2stim {
     margin-top: 10px;
     margin-bottom: 180px;
 }

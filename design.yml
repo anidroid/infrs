@@ -56,8 +56,6 @@ consent: >
   </p>
 blocks:
   -
-    eachT: true
-    randomized: true
     instr:
       1: >
         <h3>Instructions</h3>
@@ -77,17 +75,21 @@ blocks:
         <p>You are about to see a number of social media posts. Browse through the posts at your own pace and mark the ones you consider interesting. </p>
 
         <p>Ready? Press NEXT to proceed.</p>
+    eachT: true
+    stimT: 5
+    randomized: false
     trials:
       -
         trialID: 1
         layout: stim
-        nstim: 5
   -
     QID: II
     eachT: true
     randomized: true
     instr: >
-      <h4>You will now see a number of questions related to the people whose posts you saw previously. Please answer each question. If you are not certian about your a certian answer but have an intuition, please follow your intuition. If you have absolutely no idea, you can skip the question.</h4>
+      <h3>You have finished reading the posts.</h3>
+
+      <p>You will now see a number of questions related to the people whose posts you saw previously. Please answer each question. If you are not certian about an answer but have an intuition, please follow your intuition. If you have absolutely no idea, you can skip the question.</p>
     trials:
       -
         trialID: 1
