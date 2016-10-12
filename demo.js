@@ -106,7 +106,7 @@
                               CUEREF = _.sample(_.difference(_.range(0, design.cuesNeutral.length), usedNCUEREF));
                               usedNCUEREF.push(CUEREF);
                               CUES.push(design.cuesNeutral[CUEREF]);
-                              usedNCUEREF = [];
+                              //usedNCUEREF = [];
                           }
                           probesOther = _.difference(probesOther, [IIPRB]);
                           // ... select probe words for each question/task
@@ -119,7 +119,7 @@
                               CUEREF = _.sample(_.difference(_.range(0, design.cuesNeutral.length), usedNCUEREF));
                               usedNCUEREF.push(CUEREF);
                               CUES.push(design.cuesNeutral[CUEREF]);
-                              usedNCUEREF = [];
+                              //usedNCUEREF = [];
                           }
                           iiprobes = _.shuffle(_.sample(probesOther.concat(probesNovel), 9));
                       }
