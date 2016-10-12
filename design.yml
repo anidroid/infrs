@@ -76,7 +76,7 @@ blocks:
 
         <p>Ready? Press NEXT to proceed.</p>
     eachT: true
-    stimT: 5
+    stimT: 4
     randomized: false
     trials:
       -

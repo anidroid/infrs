@@ -2,6 +2,7 @@
 
     // $TODO: Fix ids in yml
     // $TODO: for btns to display normally: if, among elements, w>x or w<y, display:table
+    // $TODO: resp dismiss produces an annoying error
 
       $('.undercover').hide();
 
@@ -206,6 +207,7 @@
                   routie('instr/0')
               });
               page=-1;
+              datP['START'] = Date.now()
           });
 
           routie('instr/?:bl', function(bl) {
