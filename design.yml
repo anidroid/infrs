@@ -76,7 +76,7 @@ blocks:
 
         <p>Ready? Press NEXT to proceed.</p>
     eachT: true
-    stimT: 4
+    stimT: 20
     randomized: false
     trials:
       -
@@ -97,7 +97,7 @@ blocks:
         text: 'Which topic would you say this person is knowledgeable about or interested in?'
         probes: 'NA'
         options: 'iiprobes'
-        nprb: 9
+        nprb: 10
   -
     eachT: false
     randomized: true

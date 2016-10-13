@@ -121,7 +121,7 @@
                               CUES.push(design.cuesNeutral[CUEREF]);
                               //usedNCUEREF = [];
                           }
-                          iiprobes = _.shuffle(_.sample(probesOther.concat(probesNovel), 9));
+                          iiprobes = _.shuffle(_.sample(probesOther.concat(probesNovel), 10 ));
                       }
                       datT.push(new T(ID, COND2, IIREF, CUES, ACTRFACE, ACTRNAME, ACTRGEN, iiprobes))
                   }
