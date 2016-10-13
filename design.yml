@@ -394,7 +394,7 @@ ii:
         id: ARCH8
         text: 'Please help the #nextgen of architects to #designthefuture ! Support us here:  http://%&link&%//'
  -
-   probe: BIO
+   probe: Biology
    cues:
       -
         id: BIO1
