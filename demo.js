@@ -126,6 +126,7 @@
                       datT.push(new T(ID, COND2, IIREF, CUES, ACTRFACE, ACTRNAME, ACTRGEN, iiprobes))
                   }
               }
+              datT = _.shuffle(datT)
           } else if (design.pretest == 1) {
               allCues = []
               for (i = 0; i < design.ii.length; i++) {
