@@ -187,16 +187,11 @@
                   }
                   IIREF = allCues[i].IIREF;
                   IIPRB = allCues[i].IIPRB;
-                  CUEREF = allCues[i].CUEREF;
-                  CUETXT = allCues[i].CUETXT;
-                  CUES.push({
-                      CUEREF: CUEREF,
-                      CUETXT: CUETXT
-                  });
+                  CUES.push(allCues[i].CUETXT);
                   probesOther = _.difference(probesOther, [IIPRB]);
                   // ... select probe words for each question/task
-                  iiprobes = _.shuffle([IIPRB].concat(_.sample(probesOther.concat(probesNovel), 9)));
-                  datT.push(new T(ID, COND2, IIREF, CUES, ACTRFACE, ACTRNAME, ACTRGEN, iiprobes));
+                  iiprobes = _.shuffle([IIPRB].concat(_.sample(probesOther.concat(probesNovel), 10)));
+                  datT.push(new T(ID, COND2, IIREF, CUES, ACTRFACE, ACTRNAME, ACTRGEN, "NA", "NA", iiprobes));
               }
           } else {
               console.log('err')
@@ -231,7 +226,7 @@
               b = parseInt(bl)
               t = -1
               $('#instr').show();
-              if (b == 0){
+              if (b == 0 && design.pretest == false){
                 $('#ctext').empty().append($.parseHTML(design.blocks[b].instr[c]));
               } else {
                 $('#ctext').empty().append($.parseHTML(design.blocks[b].instr));
@@ -279,6 +274,39 @@
             layout = '#' + curr.layout
             var hb = Handlebars.compile($(layout + '-template').html());
             switch(design.blocks[b].type){
+              case 'pretest':
+                  var hb = Handlebars.compile($(layout + '-template-n').html());
+                  $('#stim').show();
+                  $(layout).html(hb(datT[s]));
+                  $('#qt1').show();
+                  $('#q1stim').hide();
+                  $('#qt1text').html(curr.text);
+                  $('#q1resp').html(templateQT1({
+                      'options': datT[s][curr.options]
+                  }));
+                  if (design.likes) {
+                      $('.btn-like').off('click').on('click', function() {
+                          if ($(this).hasClass('liked')) {
+                              $(this).removeClass('liked');
+                          } else {
+                              $(this).addClass('liked');
+                          }
+                          //datT[$(this).data('liked')].liked = 1;
+                      });
+                  } else {
+                      $('.btn-like').addClass('disabled');
+                  }
+                  $('.btn-resp').off('click').on('click', function() {
+                      datT[s].IIRESP = $(this).data('resp');
+                      if (datT[s].IIPRB === $(this).data('resp')) {
+                          datT[s].IISCORE = 1;
+                          datP['IITOTAL'] = datP['IITOTAL'] + 1;
+                      } else if (datT[s].IIPRB != 'na') {
+                          datT[s].IISCORE = 0;
+                      } else(datT[s].IISCORE = 'na');
+                      nav(b)
+                  });
+              break;
               case 'stim':
                   var pageStart = Date.now()
                   page++

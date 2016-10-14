@@ -3,7 +3,9 @@ window.nav = function(b, t) {
         if (orderid < order.length) {
             routie('b/' + b + '/' + order[orderid].trialid + '/' + order[orderid].stimid)
             orderid++
-        } else {
+          } else if (b + 1 >= design.blocks.length) {
+              routie('end')
+          } else {
             nextb = b + 1;
             routie('instr/' + nextb)
         }
