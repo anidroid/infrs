@@ -71,7 +71,7 @@ blocks:
           -
             trialID: 2
             layout: qt4
-            QID: 7
+            QID: 1
             QLB: 'PAID'
             QT: 3
             required: true
@@ -106,7 +106,7 @@ blocks:
       trials:
                 -
                   layout: qt3
-                  QID: 3
+                  QID: 2
                   QT: 1
                   QLB: 'OWNDOM'
                   text : 'Which of these domains are you interested in?'

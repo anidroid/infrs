@@ -396,7 +396,7 @@
                               for (i = 0; i < $('.btn-options').length; i++) {
                                   lab = $($('.btn-options')[i]).text();
                                   res = $($('.btn-options')[i]).hasClass('selected');
-                                  varname = 'Q' + curr.QID +'_'+ curr.QLB + '_' + lab
+                                  varname = 'Q_'+ curr.QLB + '_' + lab
                                   datP[varname] = res;
                               }
                               nav(b, t)
@@ -412,7 +412,7 @@
                               if (res == 'NA'){
                                 window.reqresp = alertify.error("Please give a response");
                               } else {
-                                datP['Q'+curr.QID+'_'+curr.QLB] = res
+                                datP['Q_'+curr.QLB] = res
                                 nav(b, t)
                                 reqresp.dismiss()
                               }
@@ -421,7 +421,7 @@
                       case 3:
                           $('.btn-resp').off('click').on('click', function() {
                               res = $('.form-control').val();
-                              datP['Q'+curr.QID+'_'+curr.QLB] = res;
+                              datP['Q_'+curr.QLB] = res;
                               if (curr.required == true){
                                 if (res == ""){
                                   window.reqresp = alertify.error("Please give a response");
