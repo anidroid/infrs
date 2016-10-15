@@ -1,7 +1,7 @@
 pretest: true
 ptrange:
   first: 0
-  last: 54
+  last: 53
 path: 1
 likes: false
 imgsrc: "faces/"
