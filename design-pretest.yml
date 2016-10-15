@@ -62,6 +62,22 @@ consent: >
   </p>
 blocks:
   -
+      type: flwp
+      eachT: false
+      randomized: false
+      instr: >
+        <p>Before you start, we would like to record your Prolific ID, please make sure you have it copied.</p>
+      trials:
+          -
+            trialID: 2
+            layout: qt4
+            QID: 7
+            QLB: 'PAID'
+            QT: 3
+            required: true
+            text: 'Please enter your Prolific ID:'
+            instr: 'It can be found at the top of this webpage or when going to your account info:'
+  -
     type: pretest
     instr: >
       <h3>Instructions</h3>
@@ -80,6 +96,52 @@ blocks:
         probes: 'NA'
         options: 'iiprobes'
         nprb: 10
+  -
+      type: flwp
+      eachT: false
+      randomized: false
+      instr: >
+        <h3>You are nearly done!</h3>
+        <p>Please answer one last question about your own interests.</p>
+      trials:
+                -
+                  layout: qt3
+                  QID: 3
+                  QT: 1
+                  QLB: 'OWNDOM'
+                  text : 'Which of these domains are you interested in?'
+                  instr: 'Select a domain by pressing it. Deselect by pressing again. Select all that apply and press Submit whenerver you are ready.'
+                  options:
+                    -
+                      lab: Teaching
+                      val: 9
+                    -
+                      lab: Design
+                      val: 3
+                    -
+                      lab: Management
+                      val: 2
+                    -
+                      lab: Programming
+                      val: 7
+                    -
+                      lab: Biology
+                      val: 1
+                    -
+                      lab: Architecture
+                      val: 0
+                    -
+                      lab: Photography
+                      val: 6
+                    -
+                      lab: Advertising
+                      val: 4
+                    -
+                      lab: Psychology
+                      val: 8
+                    -
+                      lab: Finance
+                      val: 5
 ii:
  -
    probe: Architecture
@@ -121,7 +183,7 @@ ii:
         id: BIO6
         text: 'Our lab has an Open Day. Join us to find out more about cellular dynamics (nucleus, cytoskeleton, membranes, intracellular trafficking), cell division, and other fun stuff we do!'
  -
-   probe: Mangement
+   probe: Management
    cues:
       -
         id: MGMT1

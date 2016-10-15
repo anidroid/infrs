@@ -370,36 +370,36 @@ blocks:
           text : 'Which of these domains are you interested in?'
           instr: 'Select a domain by pressing it. Deselect by pressing again. Select all that apply and press Submit whenerver you are ready.'
           options:
-            -
-              lab: Teaching
-              val: 0
-            -
-              lab: Design
-              val: 1
-            -
-              lab: Business
-              val: 2
-            -
-              lab: Programming
-              val: 3
-            -
-              lab: Biology
-              val: 4
-            -
-              lab: Architecture
-              val: 5
-            -
-              lab: Photography
-              val: 6
-            -
-              lab: Marketing
-              val: 7
-            -
-              lab: Psychology
-              val: 8
-            -
-              lab: Neuroscience
-              val: 9
+                -
+                  lab: Teaching
+                  val: 9
+                -
+                  lab: Design
+                  val: 3
+                -
+                  lab: Management
+                  val: 2
+                -
+                  lab: Programming
+                  val: 7
+                -
+                  lab: Biology
+                  val: 1
+                -
+                  lab: Architecture
+                  val: 0
+                -
+                  lab: Photography
+                  val: 6
+                -
+                  lab: Advertising
+                  val: 4
+                -
+                  lab: Psychology
+                  val: 8
+                -
+                  lab: Finance
+                  val: 5
         -
           trialID: 2
           layout: qt3
