@@ -237,11 +237,13 @@
               //this whole thing is a mess -->
               if (design.blocks[b].eachT == true) {
                 order = []; orderid = 0
-                if (design.blocks[b].stimT[c]) {
+                if (design.blocks[b].stimT != undefined) {
+                  console.log('aaa')
                   order.push({ trialid: 0, stimid: 0 })
-                  for (var i = 1; i < datT.length/design.blocks[b].stimT[c]; i++) {
-                      for (var tr = 0; tr < design.blocks[b].trials.length; tr++) {
-                          order.push({ trialid: tr, stimid: design.blocks[b].stimT[c]*i })
+                  for (var i = 1; i < datT.length/design.blocks[0].stimT[cond]; i++) {
+                      for (var tr = 0; tr < design.blocks[0].trials.length; tr++) {
+                          console.log(order)
+                          order.push({ trialid: tr, stimid: design.blocks[0].stimT[cond]*i })
                       }
                   }
                 } else {
@@ -311,7 +313,8 @@
                   page++
                   $(layout).show();
                   datt = [];
-                  for (i = s; i < s + design.blocks[b].stimT[c]; i++) {
+                  for (i = s; i < s + design.blocks[b].stimT[cond]; i++) {
+                      console.log('bb')
                       datt.push(datT[i])
                       if(datT[i]){ datT[i]["PAGE"] = page; }
                   }
