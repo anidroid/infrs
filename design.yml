@@ -442,24 +442,6 @@ blocks:
               lab: all the time
               val: 9
         -
-          trialID: 2
-          layout: qt3
-          QID: 4
-          QT: 2
-          QLB: 'MC'
-          text: 'Which of these instructions did you receive at the very beginning?'
-          instr: 'Please try to recall.'
-          options:
-            -
-              lab: Read all posts carefully
-              val: 1
-            -
-              lab: Browse through the posts
-              val: 2
-            -
-              lab: Pay attention to domains of interest/expertise
-              val: 3
-        -
             trialID: 3
             layout: qt3
             QID: 5
