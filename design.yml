@@ -72,7 +72,7 @@ blocks:
       2: >
         <h3>Instructions</h3>
 
-        <p>You are about to see a number of social media posts. Afterwards we will get further instructions for the remainder of the study. Please read the posts carefully. </p>
+        <p>You are about to see a number of social media posts. Please read the posts carefully. Afterwards we will get further instructions for the remainder of the study.</p>
 
         <p>Ready? Press NEXT to proceed.</p>
       3: >
@@ -82,7 +82,9 @@ blocks:
 
         <p>Ready? Press NEXT to proceed.</p>
     eachT: true
-    stimT: 18
+    stimT:
+      1: 1
+      2: 18
     randomized: false
     trials:
       -

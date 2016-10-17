@@ -8,7 +8,7 @@
       if (QueryString['c']) {
           var cond = window.decode(window.QueryString.c)
       } else {
-          cond = _.sample([1,2,3])
+          cond = _.sample([1,2])
       };
 
       if (QueryString['d']) {
@@ -226,7 +226,7 @@
               t = -1
               $('#instr').show();
               if (b == 0 && design.pretest == false){
-                $('#ctext').empty().append($.parseHTML(design.blocks[b].instr[c]));
+                $('#ctext').empty().append($.parseHTML(design.blocks[b].instr[2]));
               } else {
                 $('#ctext').empty().append($.parseHTML(design.blocks[b].instr));
               }
@@ -237,11 +237,11 @@
               //this whole thing is a mess -->
               if (design.blocks[b].eachT == true) {
                 order = []; orderid = 0
-                if (design.blocks[b].stimT) {
+                if (design.blocks[b].stimT[c]) {
                   order.push({ trialid: 0, stimid: 0 })
-                  for (var i = 1; i < datT.length/design.blocks[b].stimT; i++) {
+                  for (var i = 1; i < datT.length/design.blocks[b].stimT[c]; i++) {
                       for (var tr = 0; tr < design.blocks[b].trials.length; tr++) {
-                          order.push({ trialid: tr, stimid: design.blocks[b].stimT*i })
+                          order.push({ trialid: tr, stimid: design.blocks[b].stimT[c]*i })
                       }
                   }
                 } else {
@@ -311,7 +311,7 @@
                   page++
                   $(layout).show();
                   datt = [];
-                  for (i = s; i < s + design.blocks[b].stimT; i++) {
+                  for (i = s; i < s + design.blocks[b].stimT[c]; i++) {
                       datt.push(datT[i])
                       if(datT[i]){ datT[i]["PAGE"] = page; }
                   }
@@ -391,13 +391,15 @@
                                   $(this).addClass('selected');
                               }
                           });
+                          res=''
                           $('.btn-resp').off('click').on('click', function() {
                               for (i = 0; i < $('.btn-options').length; i++) {
                                   lab = $($('.btn-options')[i]).text();
-                                  res = $($('.btn-options')[i]).hasClass('selected');
-                                  varname = 'Q_'+ curr.QLB + '_' + lab
-                                  datP[varname] = res;
+                                  if($($('.btn-options')[i]).hasClass('selected')){
+                                    res = res.concat(lab+'_')
+                                  };
                               }
+                              datP['Q_'+ curr.QLB] = res;
                               nav(b, t)
                           });
                       break;
