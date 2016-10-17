@@ -1,7 +1,6 @@
   $(document).ready(function() {
 
-    // $TODO: Fix ids in yml
-    // $TODO: for btns to display normally: if, among elements, w>x or w<y, display:table
+    // $TODO: SPELLCHECK!
     // $TODO: resp dismiss produces an annoying error
 
       $('.undercover').hide();

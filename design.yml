@@ -14,7 +14,7 @@ debriefing:
     id: 'debrief'
     text1: 'Thank you! <br><br> You have completed the study. Your responses have been recorded. Your participation is an invaluable contribution, without which we will not be able to conduct this research. We would be happy to provide further details and insights, as well as answer any questions you might have: a.levordashka|at|iwm-tuebingen|dot|de. <br><br> '
     text2: 'Should you wish to withdraw your data, you have the rights to do so in the next two weeks. To do so, email us with the following reference number: '
-    text3: '. Please note that we need this reference number to remove your data. Without it, we will not be able to do so, since we have no other identifying information. Storing it is your responsliblity.'
+    text3: '. Please note that we need this reference number to remove your data. Without it, we will not be able to do so, since we have no other identifying information. Storing it is your responsibility.'
     retractdata: '<b>rdcode</b>'
     platform:
       -
@@ -188,7 +188,7 @@ blocks:
     instr: >
       <h3>You have completed the previous task.</h3>
 
-      <p>You will now see a number of questions related to the people whose posts you saw previously. Please answer each question. If you are not certian about an answer but have an intuition, please follow your intuition. If you have absolutely no idea, you can skip the question.</p>
+      <p>You will now see a number of questions related to the people whose posts you saw previously. Please answer each question. If you are not certain about an answer but have an intuition, please follow your intuition. If you have absolutely no idea, you can skip the question.</p>
     trials:
       -
         trialID: 1
@@ -303,7 +303,7 @@ blocks:
           text: >
             While you were reading the social media posts, how frequently did you...
           probe: >
-            skimmed a sentece for keywords without reading it carefully
+            skimmed a sentence for keywords without reading it carefully
           instr: ''
           options:
             -
@@ -368,7 +368,7 @@ blocks:
           QT: 1
           QLB: 'OWNDOM'
           text : 'Which of these domains are you interested in?'
-          instr: 'Select a domain by pressing it. Deselect by pressing again. Select all that apply and press Submit whenerver you are ready.'
+          instr: 'Select a domain by pressing it. Deselect by pressing again. Select all that apply and press Submit whenever you are ready.'
           options:
                 -
                   lab: Teaching
@@ -401,7 +401,7 @@ blocks:
                   lab: Finance
                   val: 5
         -
-          trialID: 2
+          trialID: 1
           layout: qt3
           QID: 4
           QT: 2
@@ -458,7 +458,32 @@ blocks:
               lab: Pay attention to domains of interest/expertise
               val: 3
         -
-          trialID: 2
+            trialID: 3
+            layout: qt3
+            QID: 5
+            QT: 2
+            QLB: 'ATT'
+            VT: 'num'
+            text: 'It will be tremendously helpful if you let us know how attentive you were during this study.'
+            instr: ' Your answer to this question will not affect your participation or reimbursement in any way. We will not report it to Prolific. All we want to know is how seriously to regard your data. Please select the sentence that best describes your behavior during the study.'
+            options:
+              -
+                lab: You answered all questions carefully .
+                val: 0
+              -
+                lab: You answered most questions carefully but were sometimes distracted.
+                val: 1
+              -
+                lab: You answered some questions carefully but were often distracted.
+                val: 2
+              -
+                lab: You were mostly distracted and did not answer carefully.
+                val: 3
+              -
+                lab: Your responses were mostly random.
+                val: 4
+        -
+          trialID: 4
           layout: qt4
           QID: 7
           QLB: 'PAID'
@@ -478,13 +503,10 @@ ii:
         text: 'Ten years ago today, this beautiful building existed only in my head and blueprints. And look at it now!'
       -
         id: ARCH3
-        text: 'New project starting in Beijing. Remodelling an old library building from the ground up'
+        text: 'New project starting in Beijing. Remodeling an old library building from the ground up'
       -
         id: ARCH4
         text: 'Being interviewed about my latest creation: Residential complex with rooftop pools and forests'
-      -
-        id: ARCH5
-        text: 'My latest project: Transforming a rundown cotton factory into a cutting edge working space'
  -
    probe: Biology
    cues:
@@ -496,31 +518,10 @@ ii:
         text: 'I spend my days working on disease mechanisms and models, pathogens, molecular medicine. Ask me anything'
       -
         id: BIO3
-        text: 'Jules pondering the role membrane protein in antibiotic tolerance at the @SWBio_DTP poster conference.'
-      -
-        id: BIO4
-        text: 'Are there any researchers who recently set up a Cell Imaging lab? Looking for examples of equipment list & cost. Thanks!'
-      -
-        id: BIO5
         text: 'Stalk-eyed Fruit Fly, male and female (Pelmatops tangliangi, Tephritidae). Happy biology/entomology geek.'
       -
-        id: BIO6
+        id: BIO4
         text: 'Our lab has an Open Day. Join us to find out more about cellular dynamics (nucleus, cytoskeleton, membranes, intracellular trafficking), cell division, and other fun stuff we do!'
- -
-   probe: Mangement
-   cues:
-      -
-        id: MGMT1
-        text: 'I was featured in a magazine article on leading entrepreneurs. #humblebrag'
-      -
-        id: MGMT2
-        text: 'My interview with Business Insider is now online: http://%&link&%// Discussing business strategies'
-      -
-        id: MGMT3
-        text: 'Excited to be giving a workshop on "The rules of successful leadership" and Harvard Business School'
-      -
-        id: MGMT4
-        text: 'Co founder and CEO of InnovationInsights. Sharing my experiences of running a company. Ask me anything.'
  -
    probe: Design
    cues:
@@ -562,18 +563,13 @@ ii:
         text: 'As of next month I will be joining Goldman Sachs helping Americans better manage credit card debt http://%&link&%// Cc @FastCompany'
       -
         id: FIN2
-        text: 'How does investing in #cleanenergy power a brighter future? Find out in the $GS Clean Energy Impact Report: http://%&link&%// '
+        text: 'On the latest podcast, I answer questions like, Is it worth buying real estate just to safely invest money? Tune in for more!'
       -
-        id: NEU3
-        text: 'On the laterst podcast, I answer questions like, Is it worth buying real estate just to safely invest money? Tune in for more!'
-      -
-        id: FIN4
+        id: FIN3
         text: 'A rule for active traders. When the $spx stock is below the 8/21day moving average, be tactical. #stockmarket #trading'
       -
-        id: FIN5
-        text: 'Love the challenge when stock markets get like this. A succesful trader has the ability to stay rational and think #money when every1 else is getting emotional.'
-      -
-
+        id: FIN4
+        text: 'Love the challenge when stock markets get like this. A successful trader has the ability to stay rational and think #money when every1 else is getting emotional.'
  -
    probe: Photography
    cues:
@@ -594,7 +590,7 @@ ii:
         text: 'Two weeks from now, I’ll be traveling to Japan to exhibit my work. Black & White landscapes and portraits. See some of the images on Instagram http://%&link&%//'
       -
         id: PHO6
-        text: 'Spending days and days behind the lens, trying to capture the right moment and put it in my porfolio :)'
+        text: 'Spending days and days behind the lens, trying to capture the right moment and put it in my portfolio :)'
  -
    probe: Programming
    cues:
@@ -606,7 +602,7 @@ ii:
         text: 'The MIT License, Line by Line. 171 words every web developer should understand.'
       -
         id: PROG3
-        text: 'Front-end developer aka JavaScript wizzard jQuery, React.js, Angular) also HTML5/CSS3, and PHP. Hire me!'
+        text: 'Front-end developer aka JavaScript wizard (jQuery, React.js, Angular) also HTML5/CSS3, and PHP. Hire me!'
       -
         id: PROG4
         text: 'Advanced Java Script Tutorial #3  http://%&link&%//  via @YouTube'
@@ -627,7 +623,7 @@ ii:
         text: 'How to deal with Social Phobias? My new article in the Journal of Mental Illness http://%&link&%// #mentalhealth #mentalillness'
       -
         id: PSY3
-        text: 'Fascinating new research domain of developmental science, lead by my colleagues at the Behavior Research Institute'
+        text: 'Fascinating new research domain of developmental science, led by my colleagues at the Behavior Research Institute'
       -
         id: PSY4
         text: 'my supervisor has agreed to my dissertation topic proposal: borderline personality disorder! so excited to get started'
@@ -674,7 +670,7 @@ probesNovel:
 cuesNeutral:
   -
     id: NEUT1
-    text: 'To do list for the next month: all the work I have been pretending doesnt exist for the past two weeks.'
+    text: 'To do list for the next month: all the work I have been pretending doesn’t exist for the past two weeks.'
     probe: 'month'
   -
     id: NEUT2
@@ -750,7 +746,7 @@ cuesNeutral:
     probe: family
   -
     id: NEUT20
-    text: 'Succesfully submited my Bachelor thesis. Big thanks to my advisor, he is the best. It has been a privilege to learn from the best'
+    text: 'Successfully submitted my Bachelor thesis. Big thanks to my advisor, he is the best. It has been a privilege to learn from the best'
     probe: thesis
   -
     id: NEUT21
