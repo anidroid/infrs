@@ -132,18 +132,18 @@ blocks:
                         </div>
                       </div>
                       <div class="q" id="q2probe1">
-                        <div class="probe" data-probe="inbox">prize</div>
+                        <div class="probe" data-probe="prize">prize</div>
                       </div>
                       <div class="q" id="q2resp1">
                         <div class="q1-choices">
                           <a class="btn btn-raised btn-sm" href="#" role="button" data-resp="new">new</a>
-                          <a class="btn btn-raised btn-sm" href="#" role="button" data-resp="old">old</a>
+                          <a class="btn btn-raised btn-sm selected" href="#" role="button" data-resp="old">old</a>
                         </div>
                       </div>
                   </div>
             </div>
             <br>
-            <p>In the example below, the correct response would be 'NEW', because the word 'whale' does not appear in the sentence:</p>
+            <p>In the example below, the correct response would be 'NEW', because the word 'astronaut' does not appear in the sentence:</p>
             <div class=" q" id="qt21" style="">
                     <div class="row">
                         <div class="col-sm-12" id="q2text1"></div>
@@ -162,7 +162,7 @@ blocks:
                         </div>
                     <div class="q" id="q2resp1">
                       <div class="q1-choices">
-                          <a class="btn btn-raised btn-sm" href="#" role="button" data-resp="new">new</a>
+                          <a class="btn btn-raised btn-sm selected" href="#" role="button" data-resp="new">new</a>
                           <a class="btn btn-raised btn-sm" href="#" role="button" data-resp="old">old</a>
                       </div>
                       </div>
@@ -174,10 +174,20 @@ blocks:
     trials:
       -
         trialID: 1
-        grouplbl: domain
+        grouplbl: SAME
         layout: qt2
         text: 'Do you think the word below appeared in the sentence posted by this person?'
-        probes: 'probes1'
+        probes: 'PRPRB_SAME'
+        options:
+          - new
+          - old
+        nprb: NA
+      -
+        trialID: 1
+        grouplbl: OTHR
+        layout: qt2
+        text: 'Do you think the word below appeared in the sentence posted by this person?'
+        probes: 'PRPRB_OTHR'
         options:
           - new
           - old
@@ -452,7 +462,7 @@ blocks:
             instr: ' Your answer to this question will not affect your participation or reimbursement in any way. We will not report it to Prolific. All we want to know is how seriously to regard your data. Please select the sentence that best describes your behavior during the study.'
             options:
               -
-                lab: You answered all questions carefully .
+                lab: You answered all questions carefully.
                 val: 0
               -
                 lab: You answered most questions carefully but were sometimes distracted.
@@ -562,7 +572,7 @@ ii:
         text: 'Catching a flight to Oaxaca, a bag full of camera lenses. 2 days trying to capture the beauty of sea turtles! #Mexico'
       -
         id: PHO2
-        text: 'Lifestyle photoshoot at the exhibition Madrid #lifestyle #portraits http://%&link&%//'
+        text: 'Lifestyle photoshoot at the exhibition Madrid #Lifestyle #Portraits http://%&link&%//'
       -
         id: PHO3
         text: 'Check out my work for Lonely Nature: Photo tours to #Patagonia, #Tansania, #Svalbard and more! http://%&link&%//'

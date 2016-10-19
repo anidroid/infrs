@@ -18,7 +18,7 @@
       };
 
       // Function to create a Profile object
-      function T(ID, COND2, IIREF, CUES, ACTRFACE, ACTRNAME, ACTRGEN, PRPRB, PRCND,iiprobes) {
+      function T(ID, COND2, IIREF, CUES, ACTRFACE, ACTRNAME, ACTRGEN, PRPRB_SAME, PRPRB_OTHR,iiprobes) {
           this.ID = ID;
           this.COND2 = COND2;
           this.IIREF = IIREF; //teaching
@@ -27,8 +27,8 @@
           this.ACTRFACE = ACTRFACE;
           this.ACTRNAME = ACTRNAME;
           this.ACTRGEN = ACTRGEN;
-          this.PRPRB = PRPRB;
-          this.PRCND = PRCND;
+          this.PRPRB_SAME = PRPRB_SAME;
+          this.PRPRB_OTHR = PRPRB_OTHR;
           this.iiprobes = iiprobes;
       }
 
@@ -112,15 +112,8 @@
                           probesOther = _.difference(probesOther, [IIPRB]);
                           // ... select probe words for each question/task
                           iiprobes = _.shuffle([IIPRB].concat(_.sample(probesOther.concat(probesNovel),9)));
-                          if(t < design.cond[cnd].prb_match){
-                          PRPRB = IIPRB;
-                          PRCND = 'match'}
-                          if(t >= design.cond[cnd].prb_match && t < design.cond[cnd].prb_match+design.cond[cnd].prb_mismatch ){
-                          PRPRB = _.sample(_.difference(probesOther, IIPRB));
-                          PRCND = 'mismatch'}
-                          if(t >= design.cond[cnd].prb_match+design.cond[cnd].prb_mismatch && t < design.cond[cnd].prb_match+design.cond[cnd].prb_mismatch+design.cond[cnd].prb_novel ){
-                          PRPRB = _.sample(probesNovel);
-                          PRCND = 'novel'}
+                          PRPRB_SAME = IIPRB;
+                          PRPRB_OTHR = _.sample(_.difference(probesOther, IIPRB));
                       } else {
                           IIREF = 'NA';
                           IIPRB = 'NA';
@@ -132,10 +125,9 @@
                               //usedNCUEREF = [];
                           }
                           iiprobes = _.shuffle(_.sample(probesOther.concat(probesNovel), 10 ));
-                          PRPRB = design.cuesNeutral[CUEREF].probe
-                          PRCND = 'match'
+                          PRPRB_SAME = design.cuesNeutral[CUEREF].probe
                       }
-                      datT.push(new T(ID, COND2, IIREF, CUES, ACTRFACE, ACTRNAME, ACTRGEN, PRPRB, PRCND, iiprobes))
+                      datT.push(new T(ID, COND2, IIREF, CUES, ACTRFACE, ACTRNAME, ACTRGEN, PRPRB_SAME, PRPRB_OTHR, iiprobes))
                   }
               }
               datT = _.shuffle(datT)
@@ -333,8 +325,11 @@
                   }
                   //nav(1,t,r)
                   $('.btn-stim').off('click').on('click', function() {
-                      datP['DURPG_' + page] = (Date.now() - pageStart) / 1000;
-                      datP['DURPG_' + page] = (Date.now() - pageStart) / 1000;
+                      datT[s]["PAGE_DUR"] = (Date.now() - pageStart) / 1000;
+                      for (i = s; i < s + design.blocks[b].stimT[cond]; i++) {
+                          datT[i]["PAGE_DUR"] = (Date.now() - pageStart) / 1000;
+                          datT[i]["PAGE_DURPP"] = Math.round((Date.now() - pageStart) / design.blocks[b].stimT[cond])*1000/1000 / 1000;
+                      }
                       nav(b)
                   });
               break;
@@ -360,16 +355,19 @@
                   });
               break;
               case 'pr':
+                  if (datT[s][curr.probes]==undefined) {
+                    nav(b,t)
+                  }
                   $(layout).show();
                   $(layout + 'text').html(curr.text);
                   $('#q2stim').html(templateStimT(datT[s]));
-                  $('#q2probe').html(templateStimP(datT[s].PRPRB)); ////cmt:optional
+                  $('#q2probe').html(templateStimP(datT[s][curr.probes])); ////cmt:optional
                   $('#q2resp').html(templateQT2({
                       'options': curr.options
                   }));
                   //nav(2,t,r)
                   $('.btn-resp').off('click').on('click', function() {
-                      datT[s][design.blocks[b].QID+'RESP'] = $(this).data('resp')
+                      datT[s][design.blocks[b].QID+'RESP_'+curr.grouplbl] = $(this).data('resp')
                       nav(b,t)
                   });
               break;
