@@ -357,15 +357,15 @@
               case 'pr':
                   if (datT[s][curr.probes]==undefined) {
                     nav(b,t)
+                  } else {
+                    $(layout).show();
+                    $(layout + 'text').html(curr.text);
+                    $('#q2stim').html(templateStimT(datT[s]));
+                    $('#q2probe').html(templateStimP(datT[s][curr.probes])); ////cmt:optional
+                    $('#q2resp').html(templateQT2({
+                        'options': curr.options
+                    }));
                   }
-                  $(layout).show();
-                  $(layout + 'text').html(curr.text);
-                  $('#q2stim').html(templateStimT(datT[s]));
-                  $('#q2probe').html(templateStimP(datT[s][curr.probes])); ////cmt:optional
-                  $('#q2resp').html(templateQT2({
-                      'options': curr.options
-                  }));
-                  //nav(2,t,r)
                   $('.btn-resp').off('click').on('click', function() {
                       datT[s][design.blocks[b].QID+'RESP_'+curr.grouplbl] = $(this).data('resp')
                       nav(b,t)
