@@ -18,17 +18,17 @@
       };
 
       // Function to create a Profile object
-      function T(ID, COND2, IIREF, CUES, ACTRFACE, ACTRNAME, ACTRGEN, PRPRB_SAME, PRPRB_OTHR,iiprobes) {
+      function T(ID, C_DREL, IIREF, CUES, ACTRFACE, ACTRNAME, ACTRGEN, PR_PRB_SAME, PR_PRB_OTHR,iiprobes) {
           this.ID = ID;
-          this.COND2 = COND2;
+          this.C_DREL = C_DREL;
           this.IIREF = IIREF; //teaching
           this.IIPRB = IIPRB;
           this.CUES = CUES;
           this.ACTRFACE = ACTRFACE;
           this.ACTRNAME = ACTRNAME;
           this.ACTRGEN = ACTRGEN;
-          this.PRPRB_SAME = PRPRB_SAME;
-          this.PRPRB_OTHR = PRPRB_OTHR;
+          this.PR_PRB_SAME = PR_PRB_SAME;
+          this.PR_PRB_OTHR = PR_PRB_OTHR;
           this.iiprobes = iiprobes;
       }
 
@@ -74,7 +74,7 @@
           if (design.pretest != 1) {
               for (cnd = 0; cnd < design.cond.length; cnd++) { //loop tru conditions
                   for (t = 0; t < design.cond[cnd].ntargets; t++) { //loop tru targets
-                      COND2 = cnd;
+                      C_DREL = cnd;
                       ID = cnd + t;
                       ACTRGEN = _.sample(["m", "f"]);
                       if (ACTRGEN === "m") {
@@ -109,11 +109,10 @@
                               CUES.push(design.cuesNeutral[CUEREF]);
                               //usedNCUEREF = [];
                           }
-                          probesOther = _.difference(probesOther, [IIPRB]);
                           // ... select probe words for each question/task
                           iiprobes = _.shuffle([IIPRB].concat(_.sample(probesOther.concat(probesNovel),9)));
-                          PRPRB_SAME = IIPRB;
-                          PRPRB_OTHR = _.sample(_.difference(probesOther, IIPRB));
+                          PR_PRB_SAME = IIPRB;
+                          PR_PRB_OTHR = _.sample(_.difference(probesOther, [IIPRB]));
                       } else {
                           IIREF = 'NA';
                           IIPRB = 'NA';
@@ -125,9 +124,10 @@
                               //usedNCUEREF = [];
                           }
                           iiprobes = _.shuffle(_.sample(probesOther.concat(probesNovel), 10 ));
-                          PRPRB_SAME = design.cuesNeutral[CUEREF].probe
+                          PR_PRB_SAME = design.cuesNeutral[CUEREF].probe
+                          PR_PRB_OTHR = undefined
                       }
-                      datT.push(new T(ID, COND2, IIREF, CUES, ACTRFACE, ACTRNAME, ACTRGEN, PRPRB_SAME, PRPRB_OTHR, iiprobes))
+                      datT.push(new T(ID, C_DREL, IIREF, CUES, ACTRFACE, ACTRNAME, ACTRGEN, PR_PRB_SAME, PR_PRB_OTHR, iiprobes))
                   }
               }
               datT = _.shuffle(datT)
@@ -147,7 +147,7 @@
               for (i = design.ptrange.first; i < design.ptrange.last; i++) {
                   ID = i;
                   CUES = [];
-                  COND2 = "pretest"
+                  C_DREL = "pretest"
                   ACTRGEN = _.sample(["m", "f"]);
                   if (ACTRGEN === "m") {
                       ACTRNAME = _.sample(_.difference(design.names.m, usedNames));
@@ -182,7 +182,7 @@
                   probesOther = _.difference(probesOther, [IIPRB]);
                   // ... select probe words for each question/task
                   iiprobes = _.shuffle([IIPRB].concat(_.sample(probesOther.concat(probesNovel), 10)));
-                  datT.push(new T(ID, COND2, IIREF, CUES, ACTRFACE, ACTRNAME, ACTRGEN, "NA", "NA", iiprobes));
+                  datT.push(new T(ID, C_DREL, IIREF, CUES, ACTRFACE, ACTRNAME, ACTRGEN, "NA", "NA", iiprobes));
               }
           } else {
               console.log('err')
@@ -288,13 +288,13 @@
                       $('.btn-like').addClass('disabled');
                   }
                   $('.btn-resp').off('click').on('click', function() {
-                      datT[s].IIRESP = $(this).data('resp');
+                      datT[s].DR_RESP = $(this).data('resp');
                       if (datT[s].IIPRB === $(this).data('resp')) {
-                          datT[s].IISCORE = 1;
+                          datT[s].DR_SCORE = 1;
                           datP['IITOTAL'] = datP['IITOTAL'] + 1;
                       } else if (datT[s].IIPRB != 'na') {
-                          datT[s].IISCORE = 0;
-                      } else(datT[s].IISCORE = 'na');
+                          datT[s].DR_SCORE = 0;
+                      } else(datT[s].DR_SCORE = 'na');
                       nav(b)
                   });
               break;
@@ -305,7 +305,7 @@
                   datt = [];
                   for (i = s; i < s + design.blocks[b].stimT[cond]; i++) {
                       datt.push(datT[i])
-                      if(datT[i]){ datT[i]["PAGE"] = page; }
+                      if(datT[i]){ datT[i]["L_PAGE"] = page; }
                   }
                   $(layout).html(hb({
                       'hbprofiles': datt
@@ -325,10 +325,10 @@
                   }
                   //nav(1,t,r)
                   $('.btn-stim').off('click').on('click', function() {
-                      datT[s]["PAGE_DUR"] = (Date.now() - pageStart) / 1000;
+                      datT[s]["L_PAGE_DUR"] = (Date.now() - pageStart) / 1000;
                       for (i = s; i < s + design.blocks[b].stimT[cond]; i++) {
-                          datT[i]["PAGE_DUR"] = (Date.now() - pageStart) / 1000;
-                          datT[i]["PAGE_DURPP"] = Math.round((Date.now() - pageStart) / design.blocks[b].stimT[cond])*1000/1000 / 1000;
+                          datT[i]["L_PAGE_DUR"] = (Date.now() - pageStart) / 1000;
+                          datT[i]["L_PAGE_DURPP"] = Math.round((Date.now() - pageStart) / design.blocks[b].stimT[cond])*1000/1000 / 1000;
                       }
                       nav(b)
                   });
@@ -340,17 +340,17 @@
                   $('#q1resp').html(templateQT1({
                       'options': datT[s][curr.options]
                   }));
-                  datT[s]["ORDER_II"] = orderid
+                  datT[s]["DR_ORDER"] = orderid
 
                   //nav(2,t,r)
                   $('.btn-resp').off('click').on('click', function() {
-                      datT[s].IIRESP = $(this).data('resp');
+                      datT[s].DR_RESP = $(this).data('resp');
                       if (datT[s].IIPRB === $(this).data('resp')) {
-                          datT[s].IISCORE = 1;
+                          datT[s].DR_CORR = 1;
                           datP['IITOTAL'] = datP['IITOTAL'] + 1;
                       } else if (datT[s].IIPRB != 'na') {
-                          datT[s].IISCORE = 0;
-                      } else(datT[s].IISCORE = 'na');
+                          datT[s].DR_CORR = 0;
+                      } else(datT[s].DR_CORR = 'na');
                       nav(b)
                   });
               break;

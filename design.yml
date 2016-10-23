@@ -177,7 +177,7 @@ blocks:
         grouplbl: SAME
         layout: qt2
         text: 'Do you think the word below appeared in the sentence posted by this person?'
-        probes: 'PRPRB_SAME'
+        probes: 'PR_PRB_SAME'
         options:
           - new
           - old
@@ -187,7 +187,7 @@ blocks:
         grouplbl: OTHR
         layout: qt2
         text: 'Do you think the word below appeared in the sentence posted by this person?'
-        probes: 'PRPRB_OTHR'
+        probes: 'PR_PRB_OTHR'
         options:
           - new
           - old
@@ -260,7 +260,7 @@ blocks:
           layout: qt3
           QID: 4
           QT: 2
-          QLB: 'SMUF'
+          QLB: 'SMUFREQ'
           text: 'How often do you use social media sites, such as Facebook or Twitter?'
           instr: 'Select your response and press Submit.'
           options:
