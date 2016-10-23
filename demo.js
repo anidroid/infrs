@@ -54,7 +54,7 @@
           path = design.path;
           datP = {}
           datP["PN"] = pn;
-          datP["COND1"] = cond;
+          datP["C_PRES"] = cond;
           datP['IITOTAL'] = 0;
           bonus = 0;
           usedNames = []
