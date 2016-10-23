@@ -367,7 +367,7 @@
                     }));
                   }
                   $('.btn-resp').off('click').on('click', function() {
-                      datT[s][design.blocks[b].QID+'RESP_'+curr.grouplbl] = $(this).data('resp')
+                      datT[s][design.blocks[b].QID+'_RESP_'+curr.grouplbl] = $(this).data('resp')
                       nav(b,t)
                   });
               break;
