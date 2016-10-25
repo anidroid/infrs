@@ -55,7 +55,7 @@
           datP = {}
           datP["PN"] = pn;
           datP["C_PRES"] = cond;
-          datP['IITOTAL'] = 0;
+          datP['DR'] = 0;
           bonus = 0;
           usedNames = []
           usedMFaces = []
@@ -291,7 +291,7 @@
                       datT[s].DR_RESP = $(this).data('resp');
                       if (datT[s].IIPRB === $(this).data('resp')) {
                           datT[s].DR_SCORE = 1;
-                          datP['IITOTAL'] = datP['IITOTAL'] + 1;
+                          datP['DR'] = datP['DR'] + 1;
                       } else if (datT[s].IIPRB != 'na') {
                           datT[s].DR_SCORE = 0;
                       } else(datT[s].DR_SCORE = 'na');
@@ -347,7 +347,7 @@
                       datT[s].DR_RESP = $(this).data('resp');
                       if (datT[s].IIPRB === $(this).data('resp')) {
                           datT[s].DR_CORR = 1;
-                          datP['IITOTAL'] = datP['IITOTAL'] + 1;
+                          datP['DR'] = datP['DR'] + 1;
                       } else if (datT[s].IIPRB != 'na') {
                           datT[s].DR_CORR = 0;
                       } else(datT[s].DR_CORR = 'na');
