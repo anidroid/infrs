@@ -18,9 +18,9 @@
       };
 
       // Function to create a Profile object
-      function T(ID, C_DREL, IIREF, CUES, ACTRFACE, ACTRNAME, ACTRGEN, PR_PRB_SAME, PR_PRB_OTHR,iiprobes) {
+      function T(ID, COND2, IIREF, CUES, ACTRFACE, ACTRNAME, ACTRGEN, PR_PRB_SAME, PR_PRB_OTHR,iiprobes) {
           this.ID = ID;
-          this.C_DREL = C_DREL;
+          this.COND2 = COND2;
           this.IIREF = IIREF; //teaching
           this.IIPRB = IIPRB;
           this.CUES = CUES;
@@ -54,7 +54,7 @@
           path = design.path;
           datP = {}
           datP["PN"] = pn;
-          datP["C_PRES"] = cond;
+          datP["COND1"] = cond;
           datP['DR'] = 0;
           bonus = 0;
           usedNames = []
@@ -74,7 +74,7 @@
           if (design.pretest != 1) {
               for (cnd = 0; cnd < design.cond.length; cnd++) { //loop tru conditions
                   for (t = 0; t < design.cond[cnd].ntargets; t++) { //loop tru targets
-                      C_DREL = cnd;
+                      COND2 = cnd;
                       ID = cnd + t;
                       ACTRGEN = _.sample(["m", "f"]);
                       if (ACTRGEN === "m") {
@@ -127,7 +127,7 @@
                           PR_PRB_SAME = design.cuesNeutral[CUEREF].probe
                           PR_PRB_OTHR = undefined
                       }
-                      datT.push(new T(ID, C_DREL, IIREF, CUES, ACTRFACE, ACTRNAME, ACTRGEN, PR_PRB_SAME, PR_PRB_OTHR, iiprobes))
+                      datT.push(new T(ID, COND2, IIREF, CUES, ACTRFACE, ACTRNAME, ACTRGEN, PR_PRB_SAME, PR_PRB_OTHR, iiprobes))
                   }
               }
               datT = _.shuffle(datT)
@@ -147,7 +147,7 @@
               for (i = design.ptrange.first; i < design.ptrange.last; i++) {
                   ID = i;
                   CUES = [];
-                  C_DREL = "pretest"
+                  COND2 = "pretest"
                   ACTRGEN = _.sample(["m", "f"]);
                   if (ACTRGEN === "m") {
                       ACTRNAME = _.sample(_.difference(design.names.m, usedNames));
@@ -182,11 +182,23 @@
                   probesOther = _.difference(probesOther, [IIPRB]);
                   // ... select probe words for each question/task
                   iiprobes = _.shuffle([IIPRB].concat(_.sample(probesOther.concat(probesNovel), 10)));
-                  datT.push(new T(ID, C_DREL, IIREF, CUES, ACTRFACE, ACTRNAME, ACTRGEN, "NA", "NA", iiprobes));
+                  datT.push(new T(ID, COND2, IIREF, CUES, ACTRFACE, ACTRNAME, ACTRGEN, "NA", "NA", iiprobes));
               }
           } else {
               console.log('err')
           }
+
+          //get all cues in the same object
+          datC = [];
+          for (i = 0; i < datT.length; i++) {
+              for (c = 0; c < datT[i].CUES.length; c++) {
+                  datC.push({
+                    ACTRNAME: datT[i].ACTRNAME,
+                    CUES: datT[i].CUES[c],
+                  });
+              }
+          }
+          datC = _.shuffle(datC)
 
           // add partials
           Handlebars.registerPartial("stimcomplete", $("#stimcomplete-partial").html());
@@ -218,7 +230,7 @@
               t = -1
               $('#instr').show();
               if (b == 0 && design.pretest == false){
-                $('#ctext').empty().append($.parseHTML(design.blocks[b].instr[2]));
+                $('#ctext').empty().append($.parseHTML(design.blocks[b].instr[cond]));
               } else {
                 $('#ctext').empty().append($.parseHTML(design.blocks[b].instr));
               }
@@ -231,9 +243,9 @@
                 order = []; orderid = 0
                 if (design.blocks[b].stimT != undefined) {
                   order.push({ trialid: 0, stimid: 0 })
-                  for (var i = 1; i < datT.length/design.blocks[0].stimT[cond]; i++) {
+                  for (var i = 1; i < datC.length/design.blocks[0].stimT; i++) {
                       for (var tr = 0; tr < design.blocks[0].trials.length; tr++) {
-                          order.push({ trialid: tr, stimid: design.blocks[0].stimT[cond]*i })
+                          order.push({ trialid: tr, stimid: design.blocks[0].stimT*i })
                       }
                   }
                 } else {
@@ -303,16 +315,17 @@
                   page++
                   $(layout).show();
                   datt = [];
-                  for (i = s; i < s + design.blocks[b].stimT[cond]; i++) {
-                      datt.push(datT[i])
-                      if(datT[i]){ datT[i]["L_PAGE"] = page; }
+                  for (i = s; i < s + design.blocks[b].stimT; i++) {
+                      datt.push(datC[i])
+                      if(datC[i]){ datC[i]["L_PAGE"] = page; }
                   }
                   $(layout).html(hb({
                       'hbprofiles': datt
                   }));
 
                   if (design.likes) {
-                      $('.btn-like').off('click').on('click', function() {
+                      $('.btn-like').on('click', function(e) {
+                          e.preventDefault();
                           if ($(this).hasClass('liked')) {
                               $(this).removeClass('liked');
                           } else {
@@ -325,11 +338,22 @@
                   }
                   //nav(1,t,r)
                   $('.btn-stim').off('click').on('click', function() {
-                      datT[s]["L_PAGE_DUR"] = (Date.now() - pageStart) / 1000;
-                      for (i = s; i < s + design.blocks[b].stimT[cond]; i++) {
-                          datT[i]["L_PAGE_DUR"] = (Date.now() - pageStart) / 1000;
-                          datT[i]["L_PAGE_DURPP"] = Math.round((Date.now() - pageStart) / design.blocks[b].stimT[cond])*1000/1000 / 1000;
+                      datC[s]["L_PAGE_DUR"] = (Date.now() - pageStart) / 1000;
+                      for (i = s; i < s + design.blocks[b].stimT; i++) {
+                          datC[i]["L_PAGE_DUR"] = (Date.now() - pageStart) / 1000;
                       }
+
+                      if (design.likes) {
+                          res=[]
+                          for (i = 0; i < $('.btn-like').length; i++) {
+                              lab = $($('.btn-like')[i]).data('liked');
+                              if($($('.btn-like')[i]).hasClass('liked')){
+                                res = res.concat(lab)
+                              };
+                          }
+                          datP['Q_LIKED'] = res;
+                      }
+
                       nav(b)
                   });
               break;
@@ -370,6 +394,18 @@
                       datT[s][design.blocks[b].QID+'_RESP_'+curr.grouplbl] = $(this).data('resp')
                       nav(b,t)
                   });
+                case 'ti':
+                        $(layout).show();
+                        $(layout + 'text').html(curr.text);
+                        $('#q2stim').html(templateStimT(datT[s]));
+                        $('#q2probe').html(templateStimP(datT[s][curr.probes])); ////cmt:optional
+                        $('#q2resp').html(templateQT2({
+                            'options': curr.options
+                        }));
+                      $('.btn-resp').off('click').on('click', function() {
+                          datT[s][design.blocks[b].QID+'_RESP_'+curr.grouplbl] = $(this).data('resp')
+                          nav(b,t)
+                      });
               break;
               case 'flwp':
                   res = 'NA'

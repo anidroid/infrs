@@ -1,7 +1,7 @@
 pretest: false
 ptrange:
   first: 0
-  last: 36
+  last: 54
 likes: false
 imgsrc: "faces/"
 imgsrcAlt: "http://cdn.rawgit.com/anidroid/files/master/faces/"
@@ -26,22 +26,19 @@ debriefing:
 endredirect: "https://prolificacademic.co.uk/submissions/580f4b1b3dad6d0001410d80/complete?cc=4NZGO3JK"
 cond:
   -
-    ntargets: 4
-    ndcues: 4
-    nncues: 0
-
-  -
-    ntargets: 4
+    ntargets: 9
     ndcues: 1
     nncues: 0
+    prb_match: 3
+    prb_mismatch: 3
+    prb_novel: 3
   -
-    ntargets: 4
+    ntargets: 9
     ndcues: 0
     nncues: 1
-  -
-    ntargets: 4
-    ndcues: 0
-    nncues: 3
+    prb_match: 9
+    prb_mismatch: 0
+    prb_novel: 0
 consent: >
   <h1>Welcome!</h1>
   Thank you for your interest in this study.
@@ -69,18 +66,25 @@ blocks:
       1: >
         <h3>Instructions</h3>
 
-        <p>You are about to see a number of social media posts. Please read the posts carefully. </p>
-        <p>Afterwards you will work on some additional tasks. Specific instructions will follow.</p>
+        <p>You are about to see a number of social media posts. Afterwards we will ask you about interests/expertise of the people whose posts you saw. Therefore please pay attention to any potential domains of interest/expertise. </p>
 
         <p>Ready? Press NEXT to proceed.</p>
       2: >
         <h3>Instructions</h3>
 
+        <p>You are about to see a number of social media posts. Please read the posts carefully. Afterwards we will get further instructions for the remainder of the study.</p>
+
+        <p>Ready? Press NEXT to proceed.</p>
+      3: >
+        <h3>Instructions</h3>
+
         <p>You are about to see a number of social media posts. Browse through the posts at your own pace and mark the ones you consider interesting. </p>
-        <p>Afterwards you will work on a task that involves selecting experts who could provide a second opinion on a series of topics. Specific instructions will follow.</p>
+
         <p>Ready? Press NEXT to proceed.</p>
     eachT: true
-    stimT: 36
+    stimT:
+      1: 1
+      2: 18
     randomized: false
     trials:
       -
@@ -205,22 +209,6 @@ blocks:
         probes: 'NA'
         options: 'iiprobes'
         nprb: 10
-  -
-    type: ti
-    QID: TI
-    eachT: true
-    randomized: true
-    instr: >
-      <h3>Youfsdfsdleted the previous task.</h3>
-
-      <p>You will now see a number of questions related to the people whose posts you saw previously. Please answer each question. If you are not certain about an answer but have an intuition, please follow your intuition. If you have absolutely no idea, you can skip the question.</p>
-    trials:
-      -
-        trialID: 1
-        layout: qt2
-        text: 'How friendly/approachable do you find this person?'
-        probes: 'NA'
-        options: ["Not at all approachable","Not very approachable","Somewhat approachable","Neither","Rather approachable","Approachable","Very approachable"]
   -
       type: flwp
       eachT: false
