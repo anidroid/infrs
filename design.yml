@@ -48,9 +48,8 @@ cond:
 
 consent: >
   <h1>Welcome!</h1>
-  Thank you for your interest in this study.
   <br>
-  <p>The study is conducted by Ana Levordashka at the Leibniz-Institut fuer Wissensmedien (IWM) in Tuebingen, Germany, under the supervision of Prof. Dr. Sonja Utz. It has been approved by the Research Ethics Committee of IWM (ethikkommission|at|iwm-tuebingen|dot|de).</p>
+  <p>Thank you for your interest in this study! The study is conducted by Ana Levordashka at the Leibniz-Institut fuer Wissensmedien (IWM) in Tuebingen, Germany, under the supervision of Prof. Dr. Sonja Utz. It has been approved by the Research Ethics Committee of IWM (ethikkommission|at|iwm-tuebingen|dot|de).</p>
 
   <p>
   <b>Purpose and procedure.</b> We investigate how people process the information they see on social media and networking websites, such as Facebook and Twitter. You will read social media updates and answer questions about them. This study does not involve any foreseeable risk or discomfort.<br>
@@ -218,7 +217,7 @@ blocks:
     randomized: false
     instr: >
             <h3>You have now completed the previous task.</h3>
-            <p>Next, we ask you to make a number of choices. We will show you pairs of people and ask you to select the one that you feel is more approachable. By approachable we mean someone who is easy to talk to or deal with; friendly.</p>
+            <p>Next, we ask you to make a number of choices. We will show you pairs of people and ask you to select the one that you feel is more <b>approachable</b>. By approachable we mean someone who is easy to talk to or deal with; friendly.</p>
             <p>We are aware that this is a rather peculiar judgment to make. There are no right or wrong answers, we are simply interested in your opion. Please use on your intuition and work as quickly as possible.</p>
     trials:
       -
@@ -289,7 +288,7 @@ blocks:
     randomized: true
     instr: >
       <h3>You have now completed the previous task.</h3>
-      <p>Next, we ask you to select the person that you feel is more competent. By competent we mean a person who is able to perform her or his tasks well or efficiently, regardless of what these task might be.</p>
+      <p>Next, we ask you to select the person that you feel is more <b>competent</b>. By competent we mean a person who is able to perform her or his tasks well or efficiently, regardless of what these task might be.</p>
       <p>We are aware that this is a rather peculiar judgment to make. There are no right or wrong answers, we are simply interested in your opion. Please use on your intuition and work as quickly as possible.</p>
     trials:
       -
@@ -759,7 +758,7 @@ cuesNeutral:
     probe: country
   -
     id: NEUT22
-    text: 'An Ode to Berlin: http://www.focus.de/regional/berlin/dit-is-berlin-berlin-du-weisst-dass-du-eine-alte-schlampe-bist_id_5683971.html. Love Berlin, unique!'
+    text: 'An Ode to Berlin: <link>. Love Berlin, unique!'
     probe: unique
   -
     id: NEUT23
