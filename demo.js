@@ -432,7 +432,8 @@
                   }));
                   if (design.likes) {
                       _.each(datT, function(o) {o.LIKED=0})
-                      $('.btn-like').off('click').on('click', function() {
+                      $('.btn-like').off('click').on('click', function(e) {
+                          e.preventDefault();
                           if ($(this).hasClass('liked')) {
                               $(this).removeClass('liked');
                               _.each(_.where(datT, {'ID': $(this).data('liked')}), function(o) {o.LIKED=0})
@@ -471,7 +472,8 @@
 
                   if (design.likes) {
                       _.each(datT, function(o) {o.LIKED=0})
-                      $('.btn-like').off('click').on('click', function() {
+                      $('.btn-like').off('click').on('click', function(e) {
+                          e.preventDefault();
                           if ($(this).hasClass('liked')) {
                               $(this).removeClass('liked');
                               _.each(_.where(datT, {'ID': $(this).data('liked')}), function(o) {o.LIKED=0})
