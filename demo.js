@@ -368,6 +368,7 @@
           });
 
           routie('instr/?:bl', function(bl) {
+              window.blockStart = Date.now()
               $('.undercover').hide();
               b = parseInt(bl)
               t = -1
@@ -458,7 +459,6 @@
                   });
               break;
               case 'stim':
-                  var pageStart = Date.now()
                   page++
                   $(layout).show();
                   datt = [];
@@ -488,11 +488,7 @@
                   }
                   //nav(1,t,r)
                   $('.btn-stim').off('click').on('click', function() {
-                      datC[s]["L_PAGE_DUR"] = (Date.now() - pageStart) / 1000;
-                      for (i = s; i < s + design.blocks[b].stimT; i++) {
-                          datC[i]["L_PAGE_DUR"] = (Date.now() - pageStart) / 1000;
-                      }
-
+                      datP["L_DURATION"] = (Date.now() - blockStart) / 1000;
                       if (design.likes) {
                           res=[]
                           for (i = 0; i < $('.btn-like').length; i++) {
