@@ -40,7 +40,7 @@
                 <div class="footer">
                     <i class="fa fa-share" aria-hidden="true"></i>
                     <i class="fa fa-retweet" aria-hidden="true"></i>
-                    <a class="btn btn-sm btn-like" href="#" role="button" data-liked={{CUES.id}}><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
+                    <a class="btn btn-sm btn-like" href="#" role="button" data-liked={{ID}}><i class="fa fa-thumbs-up" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
@@ -70,28 +70,28 @@
     <div class="probe" data-probe={{this}}>{{this}}</div>
 </script>
 <script id="qt1-template" type="text/x-handlebars-template">​
-    <div class="q1-choices">
+    <div class="qt1-choices">
         {{#each options}}
-        <a class="btn btn-raised btn-sm btn-resp" href="#" role="button" data-resp={{this}}>{{this}}</a> {{/each}}
-        <a class="btn btn-sm btn-resp" href="#" role="button" data-resp="skip" style="background-color: transparent; border:0px">Skip (no idea)</a>
-    </div>
-​</script>
-<script id="qt1a-template" type="text/x-handlebars-template">​
-    <div class="q1-choices">
-        {{#each options}}
-        <a class="btn btn-raised btn-sm btn-resp" href="#" role="button" data-resp={{this}}>{{this}}</a> {{/each}}
+        <a class="btn btn-raised btn-sm btn-resp1" href="#" role="button" data-resp={{this}}>{{this}}</a> {{/each}}
+        <a class="btn btn-sm btn-resp1" href="#" role="button" data-resp="skip" style="background-color: transparent; border:0px">Skip (no idea)</a>
     </div>
 ​</script>
 <script id="qt2-template" type="text/x-handlebars-template">​
-    <div class="q1-choices">
+    <div class="qt2-choices">
+        {{#each options}}
+        <a class="btn btn-raised btn-sm btn-resp2" href="#" role="button" data-resp={{this}}>{{this}}</a> {{/each}}
+    </div>
+​</script>
+<script id="qt3-template" type="text/x-handlebars-template">​
+    <div class="qt3-choices">
         {{#each hbprofiles}}
-        <a class="btn btn-sm btn-resp" href="#" role="button" data-resp={{name}}>{{> stimtarget}}</a> {{/each}}
+        <a class="btn btn-sm btn-resp3" href="#" role="button" data-resp={{COND2}}>{{> stimtarget}}</a> {{/each}}
         <br>
-        <a class="btn btn-sm btn-resp" href="#" role="button" data-resp="skip" style="background-color: transparent; border:0px">Skip (no idea)</a>
     </div>
     ​</script>
-<script id="qt3-template" type="text/x-handlebars-template">​
-    <div class="q1-choices">
+
+<script id="qt4-template" type="text/x-handlebars-template">​
+    <div class="q4-choices">
         <h2>{{text}}</h2>
         <h3><b>{{probe}}</b></h3>
         <h4>{{instr}}</h4>
@@ -101,7 +101,7 @@
         <a class="btn btn-block btn-lg btn-resp" href="#" role="button">Submit</a>
     </div>
     ​</script>
-<script id="qt4-template" type="text/x-handlebars-template">​
+<script id="qt5-template" type="text/x-handlebars-template">​
     <div class="form-group label-floating">
         <label class="control-label" for="focusedInput1">{{text}}</label>
         <input class="form-control" id="focusedInput1" type="text">
@@ -134,20 +134,29 @@
                 <h2 class="col-sm-12" id="qt1text"></h2>
             </div>
             <div class="row">
-                <div class="col-sm-3" id="q1stim"></div>
-                <div class='q' id="q1probe"></div>
-                <div class='q' id="q1resp"></div>
+                <div class="col-sm-3" id="qt1stim"></div>
+                <div class='q probe' id="qt1probe"></div>
+                <div class='q' id="qt1resp"></div>
             </div>
         </div>
-
-        <div class="undercover q" id=qt2>
+        <div class="undercover q" id=qt3>
             <div class="row">
-                <div class="col-sm-12" id="q2text"></div>
+                <h2 class="col-sm-12" id="qt3text"></h2>
             </div>
             <div class="row">
-                <div class="col-sm-3" id="q2stim"></div>
-                <div class='q' id="q2probe"></div>
-                <div class='q' id="q2resp"></div>
+                <div class="col-sm-3" id="qt3stim"></div>
+                <div class='q probe' id="qt3probe"></div>
+                <div class='q' id="qt3resp"></div>
+            </div>
+        </div>
+        <div class="undercover q" id=qt2>
+            <div class="row">
+                <h2 class="col-sm-12" id="qt2text"></h2>
+            </div>
+            <div class="row">
+                <div class="col-sm-3" id="qt2stim"></div>
+                <div class='q' id="qt2probe"></div>
+                <div class='q' id="qt2resp"></div>
             </div>
 
         </div>

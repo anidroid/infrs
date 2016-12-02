@@ -56,6 +56,12 @@
           datP["PN"] = pn;
           datP["COND1"] = cond;
           datP['DR'] = 0;
+          datP['FC01'] = 0;
+          datP['FC23'] = 0;
+          datP['FC13'] = 0;
+          datP['FC01resp'] = "";
+          datP['FC23resp'] = "";
+          datP['FC13resp'] = "";
           bonus = 0;
           usedNames = []
           usedMFaces = []
@@ -71,12 +77,21 @@
           usedDCUEREF = [];
           usedNCUEREF = [];
           datT = [];
+          ID = 0
           if (design.pretest != 1) {
               for (cnd = 0; cnd < design.cond.length; cnd++) { //loop tru conditions
                   for (t = 0; t < design.cond[cnd].ntargets; t++) { //loop tru targets
                       COND2 = cnd;
-                      ID = cnd + t;
-                      ACTRGEN = _.sample(["m", "f"]);
+                      ID = ID+1;
+                      if (design.cond[cnd].balgen===true) {
+                        if (t < design.cond[cnd].ntargets/2){
+                          ACTRGEN = "m";
+                        } else {
+                          ACTRGEN = "f";
+                        }
+                      } else {
+                        ACTRGEN = _.sample(["m", "f"]);
+                      }
                       if (ACTRGEN === "m") {
                           ACTRNAME = _.sample(_.difference(design.names.m, usedNames));
                           usedNames.push(ACTRNAME);
@@ -193,12 +208,139 @@
           for (i = 0; i < datT.length; i++) {
               for (c = 0; c < datT[i].CUES.length; c++) {
                   datC.push({
+                    ID: datT[i].ID,
+                    ACTRFACE: datT[i].ACTRFACE,
                     ACTRNAME: datT[i].ACTRNAME,
                     CUES: datT[i].CUES[c],
                   });
               }
           }
           datC = _.shuffle(datC)
+          // facepairs for trait judgm
+          datFC = []
+          datFC.push({
+                stim:_.shuffle([
+                  datT.filter(function (obj) {return obj.COND2=== 0 & obj.ACTRGEN==="m"})[0],
+                  datT.filter(function (obj) {return obj.COND2=== 1 & obj.ACTRGEN==="m"})[0]]),
+                group:'FCC01'})
+          datFC.push({
+                stim:_.shuffle([
+                  datT.filter(function (obj) {return obj.COND2=== 0 & obj.ACTRGEN==="m"})[1],
+                  datT.filter(function (obj) {return obj.COND2=== 1 & obj.ACTRGEN==="m"})[1]]),
+                group:'FCC01'})
+           datFC.push(
+                {stim:_.shuffle([
+                  datT.filter(function (obj) {return obj.COND2=== 0 & obj.ACTRGEN==="f"})[0],
+                  datT.filter(function (obj) {return obj.COND2=== 1 & obj.ACTRGEN==="f"})[0]]),
+                group:'FCC01'})
+           datFC.push(
+                {stim:_.shuffle([
+                  datT.filter(function (obj) {return obj.COND2=== 0 & obj.ACTRGEN==="f"})[1],
+                  datT.filter(function (obj) {return obj.COND2=== 1 & obj.ACTRGEN==="f"})[1]]),
+                group:'FCC01'})
+          datFC.push({
+                stim:_.shuffle([
+                  datT.filter(function (obj) {return obj.COND2=== 2 & obj.ACTRGEN==="m"})[0],
+                  datT.filter(function (obj) {return obj.COND2=== 3 & obj.ACTRGEN==="m"})[0]]),
+                group:'FCC23'})
+          datFC.push({
+                stim:_.shuffle([
+                  datT.filter(function (obj) {return obj.COND2=== 2 & obj.ACTRGEN==="m"})[1],
+                  datT.filter(function (obj) {return obj.COND2=== 3 & obj.ACTRGEN==="m"})[1]]),
+                group:'FCC23'})
+           datFC.push(
+                {stim:_.shuffle([
+                  datT.filter(function (obj) {return obj.COND2=== 2 & obj.ACTRGEN==="f"})[0],
+                  datT.filter(function (obj) {return obj.COND2=== 3 & obj.ACTRGEN==="f"})[0]]),
+                group:'FCC23'})
+           datFC.push(
+                {stim:_.shuffle([
+                  datT.filter(function (obj) {return obj.COND2=== 2 & obj.ACTRGEN==="f"})[1],
+                  datT.filter(function (obj) {return obj.COND2=== 3 & obj.ACTRGEN==="f"})[1]]),
+                group:'FCC23'})
+          datFC.push({
+                stim:_.shuffle([
+                  datT.filter(function (obj) {return obj.COND2=== 1 & obj.ACTRGEN==="m"})[0],
+                  datT.filter(function (obj) {return obj.COND2=== 3 & obj.ACTRGEN==="m"})[0]]),
+                group:'FCC13'})
+          datFC.push({
+                stim:_.shuffle([
+                  datT.filter(function (obj) {return obj.COND2=== 1 & obj.ACTRGEN==="m"})[1],
+                  datT.filter(function (obj) {return obj.COND2=== 3 & obj.ACTRGEN==="m"})[1]]),
+                group:'FCC13'})
+           datFC.push(
+                {stim:_.shuffle([
+                  datT.filter(function (obj) {return obj.COND2=== 1 & obj.ACTRGEN==="f"})[0],
+                  datT.filter(function (obj) {return obj.COND2=== 3 & obj.ACTRGEN==="f"})[0]]),
+                group:'FCC13'})
+           datFC.push(
+                {stim:_.shuffle([
+                  datT.filter(function (obj) {return obj.COND2=== 1 & obj.ACTRGEN==="f"})[1],
+                  datT.filter(function (obj) {return obj.COND2=== 3 & obj.ACTRGEN==="f"})[1]]),
+                group:'FCC13'})
+          datFCC = _.shuffle(datFC)
+          datFC = []
+          datFC.push({
+                stim:_.shuffle([
+                  datT.filter(function (obj) {return obj.COND2=== 0 & obj.ACTRGEN==="m"})[0],
+                  datT.filter(function (obj) {return obj.COND2=== 1 & obj.ACTRGEN==="m"})[1]]),
+                group:'FCA01'})
+          datFC.push({
+                stim:_.shuffle([
+                  datT.filter(function (obj) {return obj.COND2=== 0 & obj.ACTRGEN==="m"})[1],
+                  datT.filter(function (obj) {return obj.COND2=== 1 & obj.ACTRGEN==="m"})[0]]),
+                group:'FCA01'})
+           datFC.push(
+                {stim:_.shuffle([
+                  datT.filter(function (obj) {return obj.COND2=== 0 & obj.ACTRGEN==="f"})[0],
+                  datT.filter(function (obj) {return obj.COND2=== 1 & obj.ACTRGEN==="f"})[1]]),
+                group:'FCA01'})
+           datFC.push(
+                {stim:_.shuffle([
+                  datT.filter(function (obj) {return obj.COND2=== 0 & obj.ACTRGEN==="f"})[1],
+                  datT.filter(function (obj) {return obj.COND2=== 1 & obj.ACTRGEN==="f"})[0]]),
+                group:'FCA01'})
+          datFC.push({
+                stim:_.shuffle([
+                  datT.filter(function (obj) {return obj.COND2=== 2 & obj.ACTRGEN==="m"})[0],
+                  datT.filter(function (obj) {return obj.COND2=== 3 & obj.ACTRGEN==="m"})[1]]),
+                group:'FCA23'})
+          datFC.push({
+                stim:_.shuffle([
+                  datT.filter(function (obj) {return obj.COND2=== 2 & obj.ACTRGEN==="m"})[1],
+                  datT.filter(function (obj) {return obj.COND2=== 3 & obj.ACTRGEN==="m"})[0]]),
+                group:'FCA23'})
+           datFC.push(
+                {stim:_.shuffle([
+                  datT.filter(function (obj) {return obj.COND2=== 2 & obj.ACTRGEN==="f"})[0],
+                  datT.filter(function (obj) {return obj.COND2=== 3 & obj.ACTRGEN==="f"})[1]]),
+                group:'FCA23'})
+           datFC.push(
+                {stim:_.shuffle([
+                  datT.filter(function (obj) {return obj.COND2=== 2 & obj.ACTRGEN==="f"})[1],
+                  datT.filter(function (obj) {return obj.COND2=== 3 & obj.ACTRGEN==="f"})[0]]),
+                group:'FCA23'})
+          datFC.push({
+                stim:_.shuffle([
+                  datT.filter(function (obj) {return obj.COND2=== 1 & obj.ACTRGEN==="m"})[0],
+                  datT.filter(function (obj) {return obj.COND2=== 3 & obj.ACTRGEN==="m"})[1]]),
+                group:'FCA13'})
+          datFC.push({
+                stim:_.shuffle([
+                  datT.filter(function (obj) {return obj.COND2=== 1 & obj.ACTRGEN==="m"})[1],
+                  datT.filter(function (obj) {return obj.COND2=== 3 & obj.ACTRGEN==="m"})[0]]),
+                group:'FCA13'})
+           datFC.push(
+                {stim:_.shuffle([
+                  datT.filter(function (obj) {return obj.COND2=== 1 & obj.ACTRGEN==="f"})[0],
+                  datT.filter(function (obj) {return obj.COND2=== 3 & obj.ACTRGEN==="f"})[1]]),
+                group:'FCA13'})
+           datFC.push(
+                {stim:_.shuffle([
+                  datT.filter(function (obj) {return obj.COND2=== 1 & obj.ACTRGEN==="f"})[1],
+                  datT.filter(function (obj) {return obj.COND2=== 3 & obj.ACTRGEN==="f"})[0]]),
+                group:'FCA13'})
+          datFCA = _.shuffle(datFC)
 
           // add partials
           Handlebars.registerPartial("stimcomplete", $("#stimcomplete-partial").html());
@@ -207,7 +349,8 @@
           var templateStimT = Handlebars.compile($("#stim-template-t").html());
           var templateStimP = Handlebars.compile($("#stim-template-p").html());
           var templateQT1 = Handlebars.compile($("#qt1-template").html());
-          var templateQT2 = Handlebars.compile($("#qt1a-template").html());
+          var templateQT2 = Handlebars.compile($("#qt2-template").html());
+          var templateQT3 = Handlebars.compile($("#qt3-template").html());
 
 
           // find out how to do swsitch/case OR
@@ -288,13 +431,16 @@
                       'options': datT[s][curr.options]
                   }));
                   if (design.likes) {
+                      _.each(datT, function(o) {o.LIKED=0})
                       $('.btn-like').off('click').on('click', function() {
                           if ($(this).hasClass('liked')) {
                               $(this).removeClass('liked');
+                              _.each(_.where(datT, {'ID': $(this).data('liked')}), function(o) {o.LIKED=0})
                           } else {
                               $(this).addClass('liked');
+                              _.each(_.where(datT, {'ID': $(this).data('liked')}), function(o) {o.LIKED=1})
                           }
-                          //datT[$(this).data('liked')].liked = 1;
+                        //datT[$(this).data('liked')].liked = 1;
                       });
                   } else {
                       $('.btn-like').addClass('disabled');
@@ -324,14 +470,16 @@
                   }));
 
                   if (design.likes) {
-                      $('.btn-like').on('click', function(e) {
-                          e.preventDefault();
+                      _.each(datT, function(o) {o.LIKED=0})
+                      $('.btn-like').off('click').on('click', function() {
                           if ($(this).hasClass('liked')) {
                               $(this).removeClass('liked');
+                              _.each(_.where(datT, {'ID': $(this).data('liked')}), function(o) {o.LIKED=0})
                           } else {
                               $(this).addClass('liked');
+                              _.each(_.where(datT, {'ID': $(this).data('liked')}), function(o) {o.LIKED=1})
                           }
-                          //datT[$(this).data('liked')].liked = 1;
+                        //datT[$(this).data('liked')].liked = 1;
                       });
                   } else {
                       $('.btn-like').addClass('disabled');
@@ -360,14 +508,14 @@
               case 'ii':
                   $(layout).show();
                   $(layout + 'text').html(curr.text);
-                  $('#q1stim').html(templateStimT(datT[s]));
-                  $('#q1resp').html(templateQT1({
+                  $('#qt1stim').html(templateStimT(datT[s]));
+                  $('#qt1resp').html(templateQT1({
                       'options': datT[s][curr.options]
                   }));
                   datT[s]["DR_ORDER"] = orderid
 
                   //nav(2,t,r)
-                  $('.btn-resp').off('click').on('click', function() {
+                  $('.btn-resp1').off('click').on('click', function() {
                       datT[s].DR_RESP = $(this).data('resp');
                       if (datT[s].IIPRB === $(this).data('resp')) {
                           datT[s].DR_CORR = 1;
@@ -379,22 +527,24 @@
                   });
               break;
               case 'pr':
-                  if (datT[s][curr.probes]==undefined) {
-                    nav(b,t)
+                    if (datT[s][curr.probes]==undefined) {
+                      nav(b,t)
                   } else {
                     $(layout).show();
                     $(layout + 'text').html(curr.text);
-                    $('#q2stim').html(templateStimT(datT[s]));
-                    $('#q2probe').html(templateStimP(datT[s][curr.probes])); ////cmt:optional
-                    $('#q2resp').html(templateQT2({
+                    $('#qt2stim').html(templateStimT(datT[s]));
+                    $('#qt2probe').html(templateStimP(datT[s][curr.probes])); ////cmt:optional
+                    $('#qt2resp').html(templateQT2({
                         'options': curr.options
                     }));
-                  }
-                  $('.btn-resp').off('click').on('click', function() {
+                    $('.btn-resp2').off('click').on('click', function(e) {
+		                  e.preventDefault();
                       datT[s][design.blocks[b].QID+'_RESP_'+curr.grouplbl] = $(this).data('resp')
                       nav(b,t)
-                  });
-                case 'ti':
+                    });
+                  }
+
+              case 'ti':
                         $(layout).show();
                         $(layout + 'text').html(curr.text);
                         $('#q2stim').html(templateStimT(datT[s]));
@@ -407,6 +557,47 @@
                           nav(b,t)
                       });
               break;
+              case 'fc':
+                      $(layout + 'stim').hide();
+                      $(layout).show();
+                      $(layout + 'text').html(curr.text);
+                      $(layout + 'probe').html(curr.probes);
+                      switch (design.blocks[b].data){
+                        case 'FCC':
+                            $(layout+'resp').html(templateQT3({
+                                'hbprofiles': datFCC[t].stim
+                            }));
+                            $('.btn-resp3').off('click').on('click', function() {
+                              datP[datFCC[t].group+'_'+t+'_'+'PAIR']=datFCC[t].stim[1].ID+'_vs_'+datFCC[t].stim[0].ID
+                              if(datFCC[t].stim[1].COND2 === $(this).data('resp')){
+                                datP[datFCC[t].group+'_'+t+'_'+'LEFT']=1
+                              } else if(datFCC[t].stim[1].COND2 != $(this).data('resp')){
+                                datP[datFCC[t].group+'_'+t+'_'+'LEFT']=0
+                              } else {}
+                              datP[datFCC[t].group+'_'+t+'_'+'RESP']=$(this).data('resp')
+                              nav(b,t)
+                            });
+                        break;
+                        case 'FCA':
+                            $(layout+'resp').html(templateQT3({
+                                'hbprofiles': datFCA[t].stim
+                            }));
+                            $('.btn-resp3').off('click').on('click', function() {
+                              datP[datFCA[t].group+'_'+t+'_'+'PAIR']=datFCA[t].stim[1].ID+'_vs_'+datFCA[t].stim[0].ID
+                              if(datFCA[t].stim[1].COND2 === $(this).data('resp')){
+                                datP[datFCA[t].group+'_'+t+'_'+'LEFT']=1
+                              } else if(datFCA[t].stim[1].COND2 === $(this).data('resp')){
+                                datP[datFCA[t].group+'_'+t+'_'+'LEFT']=0
+                              } else {}
+                              datP[datFCA[t].group+'_'+t+'_'+'RESP']=$(this).data('resp')
+                              nav(b,t)
+                            });
+
+                        break;
+                        default:
+                        console.log('err')
+                    }
+            break;
               case 'flwp':
                   res = 'NA'
                   $('#qq').html(hb(curr));

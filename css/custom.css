@@ -41,15 +41,19 @@ body {
     font-size: .7em;
 }
 
-#q1stim {
+#qt1stim {
    margin: 20px 0px 50px 0px;
 }
 
-#q2stim {
+#qt1probe {
+   margin: 0px 0px 0px 20px;
+}
+
+#qt2stim {
     margin-top: 10px;
     margin-bottom: 180px;
 }
-#q2probe {
+#qt2probe {
     text-transform: lowercase;
 }
 .card {
@@ -130,6 +134,7 @@ body {
 .stimtarget {
     position: relative;
     padding: 1em;
+    min-width: 150px;
 }
 
 .stimtarget img {
@@ -166,4 +171,11 @@ body {
     padding-left: 15px;
     font-size: 3em;
     font-weight: bold;
+}
+
+.btn-options {
+  text-align:left;
+  text-transform:lowercase;
+  white-space:normal !important;
+  word-wrap:break-word;
 }

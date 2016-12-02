@@ -1,8 +1,9 @@
 window.nav = function(b, t) {
     if (design.blocks[b].eachT == true) {
         if (orderid < order.length) {
-            routie('b/' + b + '/' + order[orderid].trialid + '/' + order[orderid].stimid)
-            orderid++
+            currorder=orderid
+            orderid=orderid+1
+            routie('b/' + b + '/' + order[currorder].trialid + '/' + order[currorder].stimid)
           } else if (b + 1 >= design.blocks.length) {
               routie('end')
           } else {
