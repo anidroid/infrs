@@ -116,8 +116,8 @@
                               CUEREF = _.sample(_.difference(_.range(0, design.ii[IIREF].cues.length), usedDCUEREF));
                               usedDCUEREF.push(CUEREF);
                               CUES.push(design.ii[IIREF].cues[CUEREF]);
-                              usedDCUEREF = [];
                           }
+                          usedDCUEREF = [];
                           for (c = 0; c < design.cond[cnd].nncues; c++) { //add neutral cues
                               CUEREF = _.sample(_.difference(_.range(0, design.cuesNeutral.length), usedNCUEREF));
                               usedNCUEREF.push(CUEREF);
