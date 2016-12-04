@@ -355,7 +355,7 @@
 
           // find out how to do swsitch/case OR
 
-          routie('init1', function(bl) {
+          routie('init', function(bl) {
               $('.undercover').hide();
               $('#instr').show();
               $('#ctext').empty().append($.parseHTML(design.consent));
