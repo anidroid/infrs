@@ -9,7 +9,7 @@ bonus: false
 bonustext: 'You have earned a bonus of 10 cents. Thank you for the good work.'
 server:
   remote_adr: "https://janmatthis.de/v1"
-  collection: "study1"
+  collection: "study2"
 debriefing:
     id: 'debrief'
     text1: 'Thank you! <br><br> You have completed the study. Your responses have been recorded. Your participation is an invaluable contribution, without which we will not be able to conduct this research. We would be happy to provide further details and insights, as well as answer any questions you might have: a.levordashka|at|iwm-tuebingen|dot|de. <br><br> '
