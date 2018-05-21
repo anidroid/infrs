@@ -1,15 +1,15 @@
 pretest: false
 ptrange:
   first: 0
-  last: 54
-likes: false
+  last: 36
+likes: true
 imgsrc: "faces/"
 imgsrcAlt: "http://cdn.rawgit.com/anidroid/files/master/faces/"
 bonus: false
 bonustext: 'You have earned a bonus of 10 cents. Thank you for the good work.'
 server:
   remote_adr: "https://janmatthis.de/v1"
-  collection: "study new"
+  collection: "study2"
 debriefing:
     id: 'debrief'
     text1: 'Thank you! <br><br> You have completed the study. Your responses have been recorded. Your participation is an invaluable contribution, without which we will not be able to conduct this research. We would be happy to provide further details and insights, as well as answer any questions you might have: a.levordashka|at|iwm-tuebingen|dot|de. <br><br> '
@@ -23,31 +23,37 @@ debriefing:
       -
         id: 'Mturk'
         code: '<b>aaamt</b>'
-endredirect: "https://prolificacademic.co.uk/submissions/580f4b1b3dad6d0001410d80/complete?cc=4NZGO3JK"
+endredirect: "https://prolificacademic.co.uk/submissions/582b0b5268630600015b29b7/complete?cc=FL8XM0S9"
 cond:
   -
-    ntargets: 9
+    ntargets: 4
     ndcues: 1
     nncues: 0
-    prb_match: 3
-    prb_mismatch: 3
-    prb_novel: 3
+    balgen: true
   -
-    ntargets: 9
+    ntargets: 4
+    ndcues: 4
+    nncues: 0
+    balgen: true
+  -
+    ntargets: 4
     ndcues: 0
     nncues: 1
-    prb_match: 9
-    prb_mismatch: 0
-    prb_novel: 0
+    balgen: true
+  -
+    ntargets: 4
+    ndcues: 0
+    nncues: 4
+    balgen: true
+
 consent: >
   <h1>Welcome!</h1>
-  Thank you for your interest in this study.
   <br>
-  <p>The study is conducted by Ana Levordashka at the Leibniz-Institut fuer Wissensmedien (IWM) in Tuebingen, Germany, under the supervision of Prof. Dr. Sonja Utz. It has been approved by the Research Ethics Committee of IWM (ethikkommission|at|iwm-tuebingen|dot|de).</p>
+  <p>Thank you for your interest in this study! The study is conducted by Ana Levordashka at the Leibniz-Institut fuer Wissensmedien (IWM) in Tuebingen, Germany, under the supervision of Prof. Dr. Sonja Utz. It has been approved by the Research Ethics Committee of IWM (ethikkommission|at|iwm-tuebingen|dot|de).</p>
 
   <p>
   <b>Purpose and procedure.</b> We investigate how people process the information they see on social media and networking websites, such as Facebook and Twitter. You will read social media updates and answer questions about them. This study does not involve any foreseeable risk or discomfort.<br>
-  <b>Duration and compensation.</b> The study takes about 15 minutes. You will receive at least 1.3 GBP for your participation.<br>
+  <b>Duration and compensation.</b> The study takes about 10 minutes. You will receive 1.1 GBP for your participation.<br>
   <b>Confidentiality.</b> This study is anonymous. Your responses will be assigned an anonymous ID. We will not collect any identifying information beyond basic demographics. The data will be used solely for research purposes.<br>
   <b>Voluntary participation.</b> Your participation in the study is voluntary. You can stop participating at any time by simply exiting the survey. If you do so, we will not store your data.<br>
   <b>Data withdrawal.</b> Within 4 weeks of completing the survey, you will have the right to withdraw your data by sending us an email with an anonymous code we will provide at the end of the survey.<br>
@@ -66,25 +72,19 @@ blocks:
       1: >
         <h3>Instructions</h3>
 
-        <p>You are about to see a number of social media posts. Afterwards we will ask you about interests/expertise of the people whose posts you saw. Therefore please pay attention to any potential domains of interest/expertise. </p>
-
-        <p>Ready? Press NEXT to proceed.</p>
+        <h4>You are about to see a number of social media posts. Browse through the posts at your own pace and mark the ones you consider interesting using the corresponding Like (thumbs-up) buttons. </h4>
+        <h4>Afterwards you will work on some additional tasks. Specific instructions will follow.</h4>
+        <p><i>It is very important that you stay on the same page throughout the study. If you try to reload or reopen the page, use the browser back button, etc. you will exit the study, lose your responses, and not be able to return. This can also happen if you switch tabs and open additional pages.</i></p>
+        <h4>Ready? Press NEXT to proceed.</h4>
       2: >
         <h3>Instructions</h3>
 
-        <p>You are about to see a number of social media posts. Please read the posts carefully. Afterwards we will get further instructions for the remainder of the study.</p>
-
-        <p>Ready? Press NEXT to proceed.</p>
-      3: >
-        <h3>Instructions</h3>
-
-        <p>You are about to see a number of social media posts. Browse through the posts at your own pace and mark the ones you consider interesting. </p>
-
-        <p>Ready? Press NEXT to proceed.</p>
+        <h4>You are about to see a number of social media posts. Browse through the posts at your own pace and mark the ones you consider interesting using the corresponding Like (thumbs-up) buttons. </h4>
+        <h4>Afterwards you will work on a task that involves selecting <i>experts</i> who could provide a second opinion on a series of topics. Specific instructions will follow.</h4>
+        <p><i>It is very important that you stay on the same page throughout the study. If you try to reload or reopen the page, use the browser back button, etc. you will exit the study, lose your responses, and not be able to return. This can also happen if you switch tabs and open additional pages.</i></p>
+        <h4>Ready? Press NEXT to proceed.</h4>
     eachT: true
-    stimT:
-      1: 1
-      2: 18
+    stimT: 40
     randomized: false
     trials:
       -
@@ -158,7 +158,7 @@ blocks:
                           </div>
                         </div>
                         <div class="q" id="q2probe1">
-                          <div class="probe" data-probe="inbox">whale</div>
+                          <div class="probe" data-probe="inbox">astronaut</div>
                         </div>
                     <div class="q" id="q2resp1">
                       <div class="q1-choices">
@@ -210,6 +210,148 @@ blocks:
         options: 'iiprobes'
         nprb: 10
   -
+    type: fc
+    data: FCA
+    QID: TI
+    eachT: false
+    randomized: false
+    instr: >
+            <h3>You have now completed the previous task.</h3>
+            <p>Next, we ask you to make a number of choices. We will show you pairs of people and ask you to select the one that you feel is more <b>approachable</b>. By approachable we mean someone who is easy to talk to or deal with; friendly.</p>
+            <p>We are aware that this is a rather peculiar judgment to make. There are no right or wrong answers, we are simply interested in your opion. Please use on your intuition and work as quickly as possible.</p>
+    trials:
+      -
+        trialID: 1
+        layout: qt3
+        text: 'Please select the person who is more...'
+        probes: 'approachable'
+      -
+        trialID: 2
+        layout: qt3
+        text: 'Please select the person who is more...'
+        probes: 'approachable'
+      -
+        trialID: 3
+        layout: qt3
+        text: 'Please select the person who is more...'
+        probes: 'approachable'
+      -
+        trialID: 4
+        layout: qt3
+        text: 'Please select the person who is more...'
+        probes: 'approachable'
+      -
+        trialID: 1
+        layout: qt3
+        text: 'Please select the person who is more...'
+        probes: 'approachable'
+      -
+        trialID: 2
+        layout: qt3
+        text: 'Please select the person who is more...'
+        probes: 'approachable'
+      -
+        trialID: 3
+        layout: qt3
+        text: 'Please select the person who is more...'
+        probes: 'approachable'
+      -
+        trialID: 4
+        layout: qt3
+        text: 'Please select the person who is more...'
+        probes: 'approachable'
+      -
+        trialID: 1
+        layout: qt3
+        text: 'Please select the person who is more...'
+        probes: 'approachable'
+      -
+        trialID: 2
+        layout: qt3
+        text: 'Please select the person who is more...'
+        probes: 'approachable'
+      -
+        trialID: 3
+        layout: qt3
+        text: 'Please select the person who is more...'
+        probes: 'approachable'
+      -
+        trialID: 4
+        layout: qt3
+        text: 'Please select the person who is more...'
+        probes: 'approachable'
+  -
+    type: fc
+    data: FCC
+    QID: TI
+    eachT: false
+    randomized: true
+    instr: >
+      <h3>You have now completed the previous task.</h3>
+      <p>Next, we ask you to select the person that you feel is more <b>competent</b>. By competent we mean a person who is able to perform her or his tasks well or efficiently, regardless of what these task might be.</p>
+      <p>We are aware that this is a rather peculiar judgment to make. There are no right or wrong answers, we are simply interested in your opion. Please use on your intuition and work as quickly as possible.</p>
+    trials:
+      -
+        trialID: 1
+        layout: qt3
+        text: 'Please select the person who is more...'
+        probes: 'competent'
+      -
+        trialID: 2
+        layout: qt3
+        text: 'Please select the person who is more...'
+        probes: 'competent'
+      -
+        trialID: 3
+        layout: qt3
+        text: 'Please select the person who is more...'
+        probes: 'competent'
+      -
+        trialID: 4
+        layout: qt3
+        text: 'Please select the person who is more...'
+        probes: 'competent'
+      -
+        trialID: 1
+        layout: qt3
+        text: 'Please select the person who is more...'
+        probes: 'competent'
+      -
+        trialID: 2
+        layout: qt3
+        text: 'Please select the person who is more...'
+        probes: 'competent'
+      -
+        trialID: 3
+        layout: qt3
+        text: 'Please select the person who is more...'
+        probes: 'competent'
+      -
+        trialID: 4
+        layout: qt3
+        text: 'Please select the person who is more...'
+        probes: 'competent'
+      -
+        trialID: 1
+        layout: qt3
+        text: 'Please select the person who is more...'
+        probes: 'competent'
+      -
+        trialID: 2
+        layout: qt3
+        text: 'Please select the person who is more...'
+        probes: 'competent'
+      -
+        trialID: 3
+        layout: qt3
+        text: 'Please select the person who is more...'
+        probes: 'competent'
+      -
+        trialID: 4
+        layout: qt3
+        text: 'Please select the person who is more...'
+        probes: 'competent'
+  -
       type: flwp
       eachT: false
       randomized: false
@@ -218,7 +360,7 @@ blocks:
         <p>Please answer these last couple of questions about yourself and your media use.</p>
       trials:
         -
-          layout: qt3
+          layout: qt4
           QID: 3
           QT: 1
           QLB: 'OWNDOM'
@@ -257,7 +399,7 @@ blocks:
                   val: 5
         -
           trialID: 1
-          layout: qt3
+          layout: qt4
           QID: 4
           QT: 2
           QLB: 'SMUFREQ'
@@ -296,7 +438,32 @@ blocks:
               val: 9
         -
             trialID: 3
-            layout: qt3
+            layout: qt4
+            QID: 5
+            QT: 2
+            QLB: 'MC'
+            VT: 'num'
+            text: 'What instruction did you receive at the beginning of the study?'
+            instr: 'Below you see a number of instructions. Select the one that matches what you read at the beginning of the study. The texts are rather similar, so please choose carefully. You can ignore punctuation and capitalisation.'
+            options:
+              -
+                lab: You are about to see a number of social media posts. Specific instructions will follow.
+                val: 3
+              -
+                lab: You are about to see a number of social media posts. Browse through the posts at your own pace and mark the ones you consider interesting using the corresponding Like (thumbs-up) buttons. Afterwards you will work on some additional tasks. Specific instructions will follow.
+                val: 1
+              -
+                lab: You are about to see a number of social media posts. Please read the posts carefully. Afterwards you will work on a task that involves selecting experts who could provide a second opinion on a series of topics. Specific instructions will follow.
+                val: 4
+              -
+                lab: You are about to see a number of social media posts. Browse through the posts at your own pace and mark the ones you consider interesting using the corresponding Like (thumbs-up) buttons. Afterwards you will work on a task that involves selecting experts who could provide a second opinion on a series of topics. Specific instructions will follow.
+                val: 2
+              -
+                lab: If you did not read the instructions, that is okay. Please let us know by selecting this option. If you did read the instruction, but no longer remember, please select one of the options above -- whichever one seems most familiar.
+                val: 0
+        -
+            trialID: 3
+            layout: qt4
             QID: 5
             QT: 2
             QLB: 'ATT'
@@ -321,7 +488,7 @@ blocks:
                 val: 4
         -
           trialID: 4
-          layout: qt4
+          layout: qt5
           QID: 7
           QLB: 'PAID'
           QT: 3
@@ -591,7 +758,7 @@ cuesNeutral:
     probe: country
   -
     id: NEUT22
-    text: 'An Ode to Berlin: http://www.focus.de/regional/berlin/dit-is-berlin-berlin-du-weisst-dass-du-eine-alte-schlampe-bist_id_5683971.html. Love Berlin, unique!'
+    text: 'An Ode to Berlin: <link>. Love Berlin, unique!'
     probe: unique
   -
     id: NEUT23
