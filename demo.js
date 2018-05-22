@@ -663,10 +663,10 @@
               $('.undercover').hide();
               $('#debrief').show();
               $('#dtext1').empty().append($.parseHTML(design.debriefing.text1));
-              $('#dtext1').append(design.debriefing.platform[0].code);
-              $('#dtext2').empty().append($.parseHTML(design.debriefing.text2));
-              $('#dtext2').append(datP["PN"]);
-              $('#dtext2').append($.parseHTML(design.debriefing.text3));
+              //$('#dtext1').append(design.debriefing.platform[0].code);
+              //$('#dtext2').empty().append($.parseHTML(design.debriefing.text2));
+              //$('#dtext2').append(datP["PN"]);
+              //$('#dtext2').append($.parseHTML(design.debriefing.text3));
               datP['END'] = Date.now();
               datP['DURATION'] = datP['END'] - datP['START'];
               datsave = {
