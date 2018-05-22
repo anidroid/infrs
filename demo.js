@@ -37,7 +37,6 @@
 
           design = YAML.parse(data);
 
-          // KINTO settings to yml?
           var remote_adr = design.server.remote_adr;
           var bucket_name = 'app';
           var collection_name = design.server.collection;
