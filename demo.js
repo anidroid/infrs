@@ -38,7 +38,7 @@
           design = YAML.parse(data);
 
           var remote_adr = design.server.remote_adr;
-          var bucket_name = 'app';
+          var bucket_name = design.server.bucket;
           var collection_name = design.server.collection;
           var pn = _.sample(_.range(1, 9999), 1).toString();
           var pn_token = makeid(); // generate random string

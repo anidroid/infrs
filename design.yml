@@ -8,8 +8,9 @@ imgsrcAlt: "http://cdn.rawgit.com/anidroid/files/master/faces/"
 bonus: false
 bonustext: 'You have earned a bonus of 10 cents. Thank you for the good work.'
 server:
-  remote_adr: "http://kintohrk.herokuapp.com/v1/buckets/infrs"
-  collection: "may18"
+  remote_adr: "http://kintohrk.herokuapp.com/v1/"
+  bucket: "apps"
+  collection: "infrs"
 debriefing:
     id: 'debrief'
     text1: 'Thank you! <br><br> You have completed the first part of the study. You will now be redirected to a survey.'
