@@ -55,12 +55,6 @@
           datP["PN"] = pn;
           datP["COND1"] = cond;
           datP['DR'] = 0;
-          datP['FC01'] = 0;
-          datP['FC23'] = 0;
-          datP['FC13'] = 0;
-          datP['FC01resp'] = "";
-          datP['FC23resp'] = "";
-          datP['FC13resp'] = "";
           bonus = 0;
           usedNames = []
           usedMFaces = []
