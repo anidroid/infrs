@@ -78,7 +78,7 @@ Use the following command to delete records once the data is retrieved and store
 DELETE('http://kintohrk.herokuapp.com/v1/buckets/mybucket/collections/mycollection/records', config=authenticate('myadmin', 'mypass'))
 ```
 
-## Store, retrieve, and delete data
+## Store data with kinto
 
 In design.yaml, specify the Kinto server address, bucket, and collection.
 
@@ -114,7 +114,9 @@ Do a test run. A new entry should appear in the collection:
 
 http://myapp.herokuapp.com/v1/buckets/mybucket/collections/mycollection/records
 
-Once data is collected, retrieve and store it using R.
+## Get the data
+
+Once data is collected, retrieve and store it using R. At the end of the script, there is a command to delete all records from the online database. Make sure to do this before starting the study and ideally do it right after, but not before it's stored and backed up.
 
 ```R
 # file {getdata.R}
@@ -128,7 +130,7 @@ a=GET("http://kintohrk.herokuapp.com/v1/buckets/apps/collections/infrs/records",
 rawdat=content(a)
 
 # Back up the original data in json format
-write(toJSON(rawdat), file="jsondata.JSON")
+write(rjson::toJSON(rawdat), file="jsondata.JSON")
 # To read in the original json file, use:
 # rawdat <- rjson::fromJSON(file="jsondata.JSON")
 
@@ -138,12 +140,15 @@ data = data.frame()
 for(k in seq (1:length(dat))) {
   datp = data.frame()
   for (i in seq(1:length(dat[[k]]$datp))){
-    datp = plyr::rbind.fill(datp,cbind(id=dat[[k]]$id[i],fromJSON(dat[[k]]$datp[i])))}
+    datp = plyr::rbind.fill(datp,cbind(id=dat[[k]]$id[i],jsonlite::fromJSON(dat[[k]]$datp[i])))
+  }
   datt = data.frame()
   for (i in seq(1:length(dat[[k]]$datt))){
-    datt = plyr::rbind.fill(datt,cbind(id=dat[[k]]$id[i],fromJSON(dat[[k]]$datt[i])))}
+    datt = plyr::rbind.fill(datt,cbind(id=dat[[k]]$id[i],jsonlite::fromJSON(dat[[k]]$datt[i])))
+  }
   colnames(datt) <- paste("T", colnames(datt), sep = "_")
-  data = plyr::rbind.fill(data,merge(datp,datt,by.x="id",by.y="T_id"))}
+  data = plyr::rbind.fill(data,merge(datp,datt,by.x="id",by.y="T_id"))
+}
 
 # STORE the data ------------------------------
 # 'mydata' can be any name
@@ -157,7 +162,9 @@ saveRDS(data, file="mydata.rds")
 # Store as csv (transforming the list and vector values to strings)
 data$T_CUES=as.character(data$T_CUES)
 data$T_iiprobes=as.character(data$T_iiprobes)
-write.csv(data,"mydata.csv")
+write.csv(data,"C://42/mydata.csv")
+
+#DELETE('http://kintohrk.herokuapp.com/v1/buckets/apps/collections/infrs/records', config=authenticate('khrkadmin', 'khrkpass'))
 ```
 
 

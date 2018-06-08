@@ -2,7 +2,7 @@
 library(httr);library(jsonlite);library(rjson);library(dplyr);library(reshape2);library(plyr)
 
 # GET the data from the server ----------------
-a=GET("http://kintohrk.herokuapp.com/v1/buckets/apps/collections/infrs/records", 
+a=GET("https://kintohrk.herokuapp.com/v1/buckets/apps/collections/infrs/records", 
       authenticate("khrkadmin", "khrkpass"))
 rawdat=content(a)
 
@@ -40,4 +40,6 @@ saveRDS(data, file="mydata.rds")
 data$T_CUES=as.character(data$T_CUES)
 data$T_iiprobes=as.character(data$T_iiprobes)
 write.csv(data,"C://42/mydata.csv")
+
+#DELETE('http://kintohrk.herokuapp.com/v1/buckets/apps/collections/infrs/records', config=authenticate('khrkadmin', 'khrkpass'))
 
