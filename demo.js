@@ -40,7 +40,7 @@
           var remote_adr = design.server.remote_adr;
           var bucket_name = design.server.bucket;
           var collection_name = design.server.collection;
-          var pn = _.sample(_.range(1, 9999), 1).toString();
+          var pn = _.sample(_.range(1, 9999), 1).toString()+Date.now();
           var pn_token = makeid(); // generate random string
           var db = new KintoClient(remote_adr, {
               bucket: bucket_name,
@@ -677,7 +677,7 @@
                   console.log('saved data on server')
               })
               $('.btn-end').off('click').on('click', function() {
-                  window.location.replace(design.endredirect)
+                  window.location.replace(design.endredirect+'?PN='+datP.PN)
               });
           });
 
