@@ -8,7 +8,7 @@ imgsrcAlt: "http://cdn.rawgit.com/anidroid/files/master/faces/"
 bonus: false
 bonustext: 'You have earned a bonus of 10 cents. Thank you for the good work.'
 server:
-  remote_adr: "http://kintohrk.herokuapp.com/v1/"
+  remote_adr: "https://kintohrk.herokuapp.com/v1/"
   bucket: "apps"
   collection: "infrs"
 debriefing:
