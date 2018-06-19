@@ -8,7 +8,7 @@
       if (QueryString['c']) {
           var cond = window.decode(window.QueryString.c)
       } else {
-          cond = _.sample([1,2])
+          cond = _.sample([1,1])
       };
 
       if (QueryString['d']) {
@@ -40,7 +40,7 @@
           var remote_adr = design.server.remote_adr;
           var bucket_name = design.server.bucket;
           var collection_name = design.server.collection;
-          var pn = _.sample(_.range(1, 9999), 1).toString()+Date.now();
+          var pn = _.sample(_.range(1, 9999999), 1);
           var pn_token = makeid(); // generate random string
           var db = new KintoClient(remote_adr, {
               bucket: bucket_name,

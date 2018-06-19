@@ -13,7 +13,7 @@ server:
   collection: "infrs"
 debriefing:
     id: 'debrief'
-    text1: 'Thank you! <br><br> You have completed the first part of the study. You will now be redirected to a survey.'
+    text1: 'Thank you! <br><br> You have completed the first part of the study. You will now be redirected to a survey. By submitting your browser will probably show a warning message. Please agree to leave the page to continue with the second part of the study.'
 endredirect: "https://kmrc.qualtrics.com/jfe/form/SV_7PA76qtMsfaEW1f"
 cond:
   -
@@ -51,20 +51,8 @@ blocks:
       1: >
         <h3>Instructions</h3>
 
-        <p>You are about to see a number of social media posts. Afterwards we will ask you about interests/expertise of the people whose posts you saw. Therefore please pay attention to any potential domains of interest/expertise. </p>
-
-        <p>Ready? Press NEXT to proceed.</p>
-      2: >
-        <h3>Instructions</h3>
-
-        <p>You are about to see a number of social media posts. Please read the posts carefully. Afterwards we will get further instructions for the remainder of the study.</p>
-
-        <p>Ready? Press NEXT to proceed.</p>
-      3: >
-        <h3>Instructions</h3>
-
         <p>You are about to see a number of social media posts. Browse through the posts at your own pace and mark the ones you consider interesting. </p>
-
+        <p>It is very important that you stay on the same page throughout the study. If you try to reload or reopen the page, use the browser back button, etc. you will exit the study, lose your responses, and not be able to return. This can also happen if you switch tabs and open additional pages.</p>
         <p>Ready? Press NEXT to proceed.</p>
     eachT: true
     stimT: 48
